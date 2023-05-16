@@ -12,23 +12,25 @@
 
 <!-- Content Row -->
 <div class="row">
+    <div class="col-md-6 my-3">
+        <button type="button" class="btn btn-success" id="tambah_rekap">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+</div>
+
+<div class="row">
+
     <div class="col-md-12">
-        <table id="myTable" class="display">
+        <table id="myTable" class="display table">
             <thead>
                 <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
+                    <th>Tgl</th>
+                    <th>Nama Pasien</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
-                </tr>
-                <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 2 Data 2</td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -37,10 +39,3 @@
 
 </div>
 <!-- /.container-fluid -->
-<script>
-$(document).ready(function () {
-    console.log("okok");
-
-    $('#myTable').DataTable();
-});
-</script>
