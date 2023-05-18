@@ -18,4 +18,14 @@ class Pasien extends CI_Model {
 
         return $this->db->affected_rows();
     }
+
+    public function get_all_rekap_medis_by_id_pasien() {
+        $sql = "SELECT rms.* FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik=rmk.id INNER JOIN pasien AS p ON rmk.id_pasien=p.id WHERE rmk.id_pasien='". $_POST['id_pasien'] ."';";
+        return $this->db->query($sql)->result_array();
+    }
+
+    public function get_all_rekam_medik_by_id_pasien() {
+        $sql = "SELECT rmk.* FROM rekam_medik AS rmk INNER JOIN pasien AS p ON rmk.id_pasien=p.id WHERE rmk.id_pasien='". $_POST['id_pasien'] ."';";
+        return $this->db->query($sql)->result_array();
+    }
 }

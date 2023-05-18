@@ -6,6 +6,12 @@ class Dokter extends CI_Controller {
         parent::__construct();
         if (empty($this->session->has_userdata('login'))) {
             header("Location: " . base_url('login') );
+        } else {
+            $this->load->model("User");
+            $akses = $this->User->cek_akses_halaman($this->session->userdata('id_role'), $this->router->fetch_class());
+            if ($akses == 0) {
+                header("Location: " . base_url('beranda/akses_halaman_terlarang') );
+            }
         }
     }
 
@@ -65,7 +71,6 @@ class Dokter extends CI_Controller {
         $data['id'] = $_POST['id'];
         $data['title'] = "Detail Rekap Medis Pasien";
 
-
         $data['nama_kk'] = $_POST['nama_kk'];
         $data['tgl'] = $_POST['tgl'];
         $data['id_ruang'] = $_POST['id_ruang'];
@@ -79,6 +84,7 @@ class Dokter extends CI_Controller {
         $data['id_ruang'] = $_POST['id_ruang'];
         $data['nama_ruang'] = $_POST['nama_ruang'];
         $data['id_rekam_medik'] = $_POST['id_rekam_medik'];
+        $data['no_kartu'] = $_POST['no_kartu'];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -115,6 +121,7 @@ class Dokter extends CI_Controller {
         $data['id_ruang'] = $_POST['id_ruang'];
         $data['nama_ruang'] = $_POST['nama_ruang'];
         $data['id_rekam_medik'] = $_POST['id_rekam_medik'];
+        $data['no_kartu'] = $_POST['no_kartu'];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

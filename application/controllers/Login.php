@@ -20,7 +20,17 @@ class Login extends CI_Controller {
 			$rolename = $this->User->get_role_name($data_user['id_role'])[0]["rolename"];
 
 			if ($data_user['id_role'] == '6') {
-				// ngambil data pasien
+				$nama_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['nama_kk'];
+				$id_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['id'];
+				$this->session->set_userdata([
+					'id_user' => $data_user['id'],
+					'id_role' => $data_user['id_role'],
+					'email' => $data_user['email'],
+					'rolename' => $rolename,
+					'login' => "true",
+					'nama_kk' => $nama_pasien,
+					'id_pasien' => $id_pasien,
+				]);
 			} else {
 				$this->session->set_userdata([
 					'id_user' => $data_user['id'],

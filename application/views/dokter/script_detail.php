@@ -45,6 +45,7 @@ $(document).ready(function() {
             id_ruang: data.id_ruang,
             nama_ruang: data.nama_ruang,
             id_rekam_medik: data.id_rekam_medik,
+            no_kartu: data.no_kartu,
         });
     });
 
@@ -65,6 +66,7 @@ $(document).ready(function() {
             id_ruang: data.id_ruang,
             nama_ruang: data.nama_ruang,
             id_rekam_medik: data.id_rekam_medik,
+            no_kartu: data.no_kartu,
         });
     });
 

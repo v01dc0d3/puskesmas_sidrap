@@ -25,7 +25,7 @@ $(document).ready(function() {
     $('textarea#icd').summernote("code", '<?= $icd; ?>');
 
     $("button#kembali_ke_rekap_pasien").click(function() {
-        $.redirect("<?= base_url('dokter/detail/'); ?>", {
+        $.redirect("<?= base_url('auditor/dokter_lihat/'); ?>", {
             "id_rekam_medik": "<?= $id_rekam_medik; ?>",
             "no_kartu": "<?= $no_kartu; ?>",
             "nama_kk": "<?= $nama_kk; ?>",

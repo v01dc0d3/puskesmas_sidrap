@@ -6,6 +6,15 @@
     <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
 </div>
 
+<!-- Content Row -->
+<div class="row my-3">
+    <div class="col-md-6 ">
+        <button type="button" class="btn btn-danger" id="kembali_ke_auditor">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+    </div>
+</div>
+
 <div class="row">
 
     <div class="col-md-12">
@@ -17,8 +26,7 @@
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 

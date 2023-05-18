@@ -36,7 +36,7 @@ $(document).ready(function() {
                     if (data.login == "true") {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Akun Berhasil Terdaftar',
+                            title: 'Berhasil Login',
                             showConfirmButton: false,
                             timer: 1000
                         }).then((result) => {
@@ -45,7 +45,7 @@ $(document).ready(function() {
                     } else {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Akun Gagal Terdaftar',
+                            title: 'Gagal Login',
                             showConfirmButton: false,
                             timer: 1000
                         });

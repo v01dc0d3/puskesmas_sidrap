@@ -9,7 +9,7 @@
 <!-- Content Row -->
 <div class="row">
     <div class="col-md-6 my-3">
-        <button type="button" class="btn btn-danger" id="kembali_ke_rekap_pasien">
+        <button type="button" class="btn btn-danger" id="kembali_ke_pasien">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
     </div>

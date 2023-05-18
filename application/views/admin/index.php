@@ -6,14 +6,24 @@
     <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
 </div>
 
+<!-- Content Row -->
+<div class="row">
+    <div class="col-md-6 my-3">
+        <button type="button" class="btn btn-success" id="tambah_akses_halaman">
+            Tambah Halaman Baru
+        </button>
+    </div>
+</div>
+
 <div class="row">
 
     <div class="col-md-12">
         <table id="myTable" class="display table">
             <thead>
                 <tr>
-                    <th>No Kartu</th>
-                    <th>Nama Pasien</th>
+                    <th>ID</th>
+                    <th>Nama Halaman</th>
+                    <th>Nama Role</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
