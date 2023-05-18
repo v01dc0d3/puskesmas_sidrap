@@ -1,4 +1,4 @@
-<div class="modal fade modal_crud" id="<?= $modal_id; ?>" style="overflow:hidden;" aria-labelledby="<?= $modal_label; ?>" aria-hidden="true">
+<div class="modal fade modal_crud" id="<?= $modal_id; ?>" style="overflow:hidden; overflow-y:auto;" aria-labelledby="<?= $modal_label; ?>" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

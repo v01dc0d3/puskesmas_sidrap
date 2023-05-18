@@ -43,4 +43,25 @@ class Rekap_medis extends CI_Model {
         $this->db->query($sql);
         return $this->db->affected_rows();
     }
+
+    public function get_all_rekap_medis_group() {
+        $sql = "SELECT rms.id_rekam_medik, p.nama_kk, rmk.no_kartu, rmk.id_pasien FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id GROUP BY rmk.id_pasien;";
+        return $this->db->query($sql)->result_array();
+    }
+
+    public function get_all_rekap_medis_by_id_rekam_medik() {
+        $sql = "SELECT rms.*, p.nama_kk, p.umur, rmk.no_kartu, rmk.id_pasien, r.nama AS 'nama_ruang', r.id AS 'id_ruang' FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id INNER JOIN ruang AS r ON rms.id_ruang = r.id WHERE rmk.id_pasien='". $_POST['id_pasien'] ."' AND rmk.no_kartu='". $_POST['no_kartu'] ."' AND p.nama_kk='". $_POST['nama_kk'] ."' ORDER BY rms.id DESC;";
+        return $this->db->query($sql)->result_array();
+    }
+
+    public function edit_data_rekap_pasien() {
+        $sql = "UPDATE rekap_medis SET anam_pem_fisik='". $_POST['anam_pem_fisik'] ."', diagnosis='". $_POST['diagnosis'] ."', terapi='". $_POST['terapi'] ."', asuhan='". $_POST['asuhan'] ."', icd='". $_POST['icd'] ."', id_petugas='0' WHERE id='". $_POST['id'] ."' AND id_rekam_medik='". $_POST['id_rekam_medik'] ."' AND tgl='". $_POST['tgl'] ."' AND id_ruang='". $_POST['id_ruang'] ."' AND kajian='". $_POST['kajian'] ."';";
+        $this->db->query($sql);
+        return $this->db->affected_rows();
+    }
+
+    public function get_resep_by_id_rms() {
+        $sql = "SELECT ro.* FROM resep_obat AS ro INNER JOIN rekap_medis AS rms ON ro.id_rekap_medis = rms.id WHERE ro.id_rekap_medis='". $_POST['id_rms'] ."';";
+        return $this->db->query($sql)->result_array();
+    }
 }

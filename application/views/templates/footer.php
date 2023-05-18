@@ -60,6 +60,11 @@
 <link href="<?= base_url(); ?>assets/sweetalert2/sweetalert2.css" rel="stylesheet" />
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.js"></script>
 
+<!-- jquery_redirect -->
+<script src="<?= base_url('assets/jquery_redirect/jquery.redirect.js') ?>"></script>
+
+<!-- jquery md5 -->
+<script src="<?= base_url('assets/jquery_md5/jquery.md5.js') ?>"></script>
 </body>
 
 </html>

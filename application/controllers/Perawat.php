@@ -73,4 +73,15 @@ class Perawat extends CI_Controller {
         $this->load->model("Rekap_medis");
         echo $this->Rekap_medis->edit_data_rekap($id);
     }
+
+    public function modal_body_detail_rekap()
+    {
+        $data["modal_id"] = "modal_detail_rekap";
+        $data["modal_label"] = "modal_label_detail_rekap";
+        $data["modal_title"] = "Detail Rekap Medis";
+
+        $this->load->view('templates/modal/modal_header', $data);
+        $this->load->view('perawat/modal/detail_rekap');
+        $this->load->view('templates/modal/modal_footer');
+    }
 }
