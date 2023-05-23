@@ -54,37 +54,54 @@ $(document).ready(function() {
             });
         } else {
             $.ajax({
-                "url": "<?= base_url('register/daftar'); ?>",
-                "method": 'POST',
-                "data": {
-                    "email": $("#email").val(),
-                    "nama_kk": $("#nama_kk").val(),
-                    "nama": $("#nama").val(),
-                    "tanggal_lahir": $("#tanggal_lahir").val(),
-                    "alamat": $("#alamat").val(),
-                    "jenis_kelamin": $("#jenis_kelamin").val(),
-                    "pekerjaan": $("#pekerjaan").val(),
-                    "agama": $("#agama").val(),
-                    "no_hp": $("#no_hp").val(),
-                    "umur": $("#umur").val(),
-                    "password": $("#password").val(),
-                },
-                "success": function(result) {
-                    if (result == 1) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Akun Berhasil Terdaftar',
-                            showConfirmButton: false,
-                            timer: 1000
-                        }).then((result) => {
-                            window.location.replace("<?= base_url('login'); ?>");
-                        });
+                url: "<?= base_url('register/read_email_by_email'); ?>",
+                data: {email: $("#email").val()},
+                method: 'POST',
+                success: function(result) {
+                    var data_email = JSON.parse(result);
+                    if (data_email.length == 0) {
+                        $.ajax({
+                            "url": "<?= base_url('register/daftar'); ?>",
+                            "method": 'POST',
+                            "data": {
+                                "email": $("#email").val(),
+                                "nama_kk": $("#nama_kk").val(),
+                                "nama": $("#nama").val(),
+                                "tanggal_lahir": $("#tanggal_lahir").val(),
+                                "alamat": $("#alamat").val(),
+                                "jenis_kelamin": $("#jenis_kelamin").val(),
+                                "pekerjaan": $("#pekerjaan").val(),
+                                "agama": $("#agama").val(),
+                                "no_hp": $("#no_hp").val(),
+                                "umur": $("#umur").val(),
+                                "password": $("#password").val(),
+                            },
+                            "success": function(result) {
+                                if (result == 1) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Akun Berhasil Terdaftar',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    }).then((result) => {
+                                        window.location.replace("<?= base_url('login'); ?>");
+                                    });
 
-                        
+                                    
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Akun Gagal Terdaftar',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    });
+                                }
+                            }
+                        });
                     } else {
                         Swal.fire({
-                            icon: 'error',
-                            title: 'Akun Gagal Terdaftar',
+                            icon: 'warning',
+                            title: 'Email sudah terdaftar!',
                             showConfirmButton: false,
                             timer: 1000
                         });

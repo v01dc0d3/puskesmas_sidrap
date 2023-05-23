@@ -28,4 +28,9 @@ class Pasien extends CI_Model {
         $sql = "SELECT rmk.* FROM rekam_medik AS rmk INNER JOIN pasien AS p ON rmk.id_pasien=p.id WHERE rmk.id_pasien='". $_POST['id_pasien'] ."';";
         return $this->db->query($sql)->result_array();
     }
+
+    public function read_email_by_email() {
+        $sql = "SELECT email from pasien WHERE email='". $_POST['email'] ."';";
+        return $this->db->query($sql)->result_array();
+    }
 }
