@@ -7,10 +7,16 @@
 </div>
 
 <!-- Content Row -->
-<div class="row">
-    <div class="col-md-6 my-3">
-        <button type="button" class="btn btn-danger" id="kembali_ke_auditor">
+<div class="row my-3">
+    <div class="col-md-6 ">
+        <button type="button" class="btn btn-danger" id="kembali_ke_data_rekap">
             <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button type="button" class="btn btn-success" id="tambah_rekap">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-info" id="print_data_rekap_pasien">
+            <i class="fa-solid fa-print"></i>
         </button>
     </div>
 </div>

@@ -198,7 +198,12 @@ $(document).ready(function() {
     });
 
     $("button#print_data_rekap_pasien").click(function() {
-        window.open("<?= base_url('dokter/print_data_rekap_pasien/' . $id_rekam_medik); ?>");
+        $.redirect("<?= base_url('dokter/print_data_rekap_pasien'); ?>", {
+            "id_pasien": "<?= $id_pasien; ?>",
+            "no_kartu": "<?= $no_kartu; ?>",
+            "nama_kk": "<?= $nama_kk; ?>",
+            "id_rekam_medik": "<?= $id_rekam_medik; ?>",
+        }, "POST", "_blank");
     });
 
 });

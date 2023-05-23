@@ -12,6 +12,9 @@
         <button type="button" class="btn btn-success" id="ambil_antrian">
             Ambil Antrian
         </button>
+        <button type="button" class="btn btn-info" id="print_data_rekap_pasien">
+            <i class="fa-solid fa-print"></i>
+        </button>
     </div>
 </div>
 

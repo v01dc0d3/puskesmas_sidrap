@@ -97,4 +97,44 @@ class Perawat extends CI_Controller {
         $this->load->view('perawat/modal/detail_rekap');
         $this->load->view('templates/modal/modal_footer');
     }
+
+    public function get_all_rekap_medis_group() {
+        $this->load->model("Rekap_medis");
+        echo json_encode($this->Rekap_medis->get_all_rekap_medis_group());
+    }
+
+    public function detail() {
+        $data['id_rekam_medik'] = $_POST['id_rekam_medik'];
+        $data['id_pasien'] = $_POST['id_pasien'];
+        $data['nama_kk'] = $_POST['nama_kk'];
+        $data['no_kartu'] = $_POST['no_kartu'];
+        $data['title'] = "Detail Rekap Medis";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+		$this->load->view('perawat/detail', $data);
+		$this->load->view('perawat/script_detail', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_all_rekap_medis_by_id_rekam_medik() {
+        $this->load->model("Rekap_medis");
+        echo json_encode($this->Rekap_medis->get_all_rekap_medis_by_id_rekam_medik());
+    }
+
+    public function print_data_rekap_pasien() {
+        $this->load->model("Rekap_medis");
+        $data['data_rekap_pasien'] = $this->Rekap_medis->get_all_rekap_medis_by_id_rekam_medik();
+
+        $this->load->model("Rekam_medik");
+        $data['data_identitas'] = $this->Rekam_medik->get_identitas_by_id($_POST["id_rekam_medik"]);
+
+        $this->load->view('perawat/print_data_rekap_pasien', $data);
+    }
+
+    public function get_antrian() {
+        $this->load->model("M_antrian");
+        echo json_encode($this->M_antrian->m_get_antrian());
+    }
 }

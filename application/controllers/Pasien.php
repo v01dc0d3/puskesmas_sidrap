@@ -84,4 +84,34 @@ class Pasien extends CI_Controller {
         $this->load->view('pasien/modal/detail_rekam');
         $this->load->view('templates/modal/modal_footer');
     }
+
+    public function print_data_rekap_pasien() {
+        $this->load->model("Rekap_medis");
+        $data['data_rekap_pasien'] = $this->Rekap_medis->get_all_rekap_medis_by_id_rekam_medik();
+
+        $this->load->model("Rekam_medik");
+        $data['data_identitas'] = $this->Rekam_medik->get_identitas_by_id($_POST["id_rekam_medik"]);
+
+        $this->load->view('perawat/print_data_rekap_pasien', $data);
+    }
+
+    public function cek_tgl_antrian() {
+        $this->load->model("M_antrian");
+        echo json_encode($this->M_antrian->cek_tgl_antrian());
+    }
+
+    public function create_antrian() {
+        $this->load->model("M_antrian");
+        echo $this->M_antrian->create_antrian();
+    }
+
+    public function read_antrian_from_id_user() {
+        $this->load->model("M_antrian");
+        echo json_encode($this->M_antrian->read_antrian_from_id_user($_POST['id_user']));
+    }
+
+    public function delete_all_antrian() {
+        $this->load->model("M_antrian");
+        $this->M_antrian->delete_all_antrian();
+    }
 }

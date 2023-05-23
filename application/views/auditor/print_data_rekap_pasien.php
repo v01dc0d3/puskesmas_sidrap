@@ -34,9 +34,17 @@
         .table_rekap th{
             word-wrap:break-word;
         }
+        .table_rekap th, td {
+            word-wrap: break-word;
+            max-width: 150px;
+        }
     </style>
     <style type="text/css" media="print">
         @page { size: landscape; }
+        .table_rekap th, td {
+            word-wrap: break-word;
+            max-width: 150px;
+        }
     </style>
 </head>
 <body>

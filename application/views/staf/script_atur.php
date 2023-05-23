@@ -129,12 +129,12 @@ $('#myTable').on('click', 'button#data_rekam_detail', function() {
 
             $('input#nama_pasien').val(data.nama_kk);
             $('input#tgl').val(data.tgl);
-
-            $('textarea#anamnesa').summernote({height: 200,});
+            
+            $('textarea#anamnesa').summernote({height: 200, toolbar: false});
             $('textarea#anamnesa').summernote("disable");
             $('textarea#anamnesa').summernote("code", data.anamnesa);
 
-            $('textarea#saran').summernote({height: 200,});
+            $('textarea#saran').summernote({height: 200, toolbar: false});
             $('textarea#saran').summernote("disable");
             $('textarea#saran').summernote("code", data.saran);
 

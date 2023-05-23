@@ -94,12 +94,12 @@ class Dokter extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function print_data_rekap_pasien($id_rekam_medik) {
+    public function print_data_rekap_pasien() {
         $this->load->model("Rekap_medis");
-        $data['data_rekap_pasien'] = $this->Rekap_medis->get_all_rekap_medis_by_id_rekam_medik($id_rekam_medik);
+        $data['data_rekap_pasien'] = $this->Rekap_medis->get_all_rekap_medis_by_id_rekam_medik();
 
         $this->load->model("Rekam_medik");
-        $data['data_identitas'] = $this->Rekam_medik->get_identitas_by_id($id_rekam_medik);
+        $data['data_identitas'] = $this->Rekam_medik->get_identitas_by_id($_POST["id_rekam_medik"]);
 
         $this->load->view('dokter/print_data_rekap_pasien', $data);
     }

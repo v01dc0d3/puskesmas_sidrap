@@ -34,7 +34,7 @@ $('#myTable').on('click', 'button#auditor_dokter', function() {
 
 $('#myTable').on('click', 'button#auditor_perawat', function() {
     var data = table.row($(this).parents('tr')).data();
-    $.redirect("<?= base_url('auditor/perawat/'); ?>", {
+    $.redirect("<?= base_url('perawat/'); ?>", {
         "id_rekam_medik": data.id_rekam_medik,
         "no_kartu": data.no_kartu,
         "nama_kk": data.nama_kk,

@@ -14,33 +14,55 @@ class Login extends CI_Controller {
 
 	public function cek_akun() {
 		$this->load->model("User");
+		$this->load->model("M_antrian");
 
-		$data_user = $this->User->cek_akun()[0];
-		if (!empty($data_user)) {
-			$rolename = $this->User->get_role_name($data_user['id_role'])[0]["rolename"];
+		try {
+			$data_user = $this->User->cek_akun();
+			if (!empty($data_user)) {
+				$data_user = $data_user[0];
+				$rolename = $this->User->get_role_name($data_user['id_role'])[0]["rolename"];
 
-			if ($data_user['id_role'] == '6') {
-				$nama_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['nama_kk'];
-				$id_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['id'];
-				$this->session->set_userdata([
-					'id_user' => $data_user['id'],
-					'id_role' => $data_user['id_role'],
-					'email' => $data_user['email'],
-					'rolename' => $rolename,
-					'login' => "true",
-					'nama_kk' => $nama_pasien,
-					'id_pasien' => $id_pasien,
-				]);
-			} else {
-				$this->session->set_userdata([
-					'id_user' => $data_user['id'],
-					'id_role' => $data_user['id_role'],
-					'email' => $data_user['email'],
-					'rolename' => $rolename,
-					'login' => "true",
-				]);
+				if ($data_user['id_role'] == '6') {
+					$nama_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['nama_kk'];
+					$id_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['id'];
+					$no_antrian = $this->M_antrian->read_antrian_from_id_user($data_user['id']);
+					if(!empty($nama_pasien) || !empty($id_pasien)) {
+						if (count($no_antrian) == 0) {
+							$this->session->set_userdata([
+								'id_user' => $data_user['id'],
+								'id_role' => $data_user['id_role'],
+								'email' => $data_user['email'],
+								'rolename' => $rolename,
+								'login' => "true",
+								'nama_kk' => $nama_pasien,
+								'id_pasien' => $id_pasien,
+							]);
+						} else {
+							$this->session->set_userdata([
+								'id_user' => $data_user['id'],
+								'id_role' => $data_user['id_role'],
+								'email' => $data_user['email'],
+								'rolename' => $rolename,
+								'login' => "true",
+								'nama_kk' => $nama_pasien,
+								'id_pasien' => $id_pasien,
+								// 'no_antrian' => $no_antrian[0]['id'],
+							]);
+						}
+					}
+				} else {
+					$this->session->set_userdata([
+						'id_user' => $data_user['id'],
+						'id_role' => $data_user['id_role'],
+						'email' => $data_user['email'],
+						'rolename' => $rolename,
+						'login' => "true",
+					]);
+				}
 			}
+			echo json_encode($this->session->userdata());
+		} catch (Exception $e) {
+			echo $e->getMessage();
 		}
-		echo json_encode($this->session->userdata());
 	}
 }

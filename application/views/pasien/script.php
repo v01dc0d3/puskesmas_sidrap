@@ -1,6 +1,5 @@
 <script>
 $(document).ready(function() {
-
     var tabel_rekap_medis = $('#tabel_rekap_medis').DataTable({
         'autoWidth': true,
         'order': [[0, 'desc']],
@@ -85,11 +84,11 @@ $(document).ready(function() {
                 $('input#nama_pasien').val(data.nama_kk);
                 $('input#tgl').val(data.tgl);
 
-                $('textarea#anamnesa').summernote({height: 200,});
+                $('textarea#anamnesa').summernote({height: 200, toolbar: false});
                 $('textarea#anamnesa').summernote("disable");
                 $('textarea#anamnesa').summernote("code", data.anamnesa);
 
-                $('textarea#saran').summernote({height: 200,});
+                $('textarea#saran').summernote({height: 200, toolbar: false});
                 $('textarea#saran').summernote("disable");
                 $('textarea#saran').summernote("code", data.saran);
 
@@ -99,7 +98,140 @@ $(document).ready(function() {
     });
 
     $('button#ambil_antrian').click(function() {
-        console.log("nomor antrian");
+        var tgl = new Date();
+        tgl = tgl.getFullYear() + "-" + "0" + (tgl.getMonth() + 1) + "-" + tgl.getDate();
+
+        $.ajax({
+            url: "<?= base_url('pasien/cek_tgl_antrian'); ?>",
+            success: function(result) {
+                var tgl_tb = JSON.parse(result);
+                if (tgl_tb.length != 0) {
+                    tgl_tb = tgl_tb[0].tgl;
+                    if (tgl == tgl_tb) {
+                        $.ajax({
+                            url: "<?= base_url('pasien/read_antrian_from_id_user'); ?>",
+                            data: {id_user: "<?= $this->session->userdata('id_user'); ?>",},
+                            method: 'POST',
+                            success: function(result) {
+                                var no_antrian = JSON.parse(result);
+                                if (no_antrian.length != 0) {
+                                    $.ajax({
+                                        url: "<?= base_url('pasien/read_antrian_from_id_user'); ?>",
+                                        data: {id_user: "<?= $this->session->userdata('id_user'); ?>",},
+                                        method: 'POST',
+                                        success: function(result) {
+                                            var no_antrian = JSON.parse(result)[0].id;
+                                            Swal.fire({
+                                                icon: 'info',
+                                                title: 'Antrian ke-' + no_antrian,
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    $.ajax({
+                                        url: "<?= base_url('pasien/create_antrian'); ?>",
+                                        data: {tgl: tgl},
+                                        method: 'POST',
+                                        success: function(result) {
+                                            if (result == 1) {
+                                                $.ajax({
+                                                    url: "<?= base_url('pasien/read_antrian_from_id_user'); ?>",
+                                                    data: {id_user: "<?= $this->session->userdata('id_user'); ?>",},
+                                                    method: 'POST',
+                                                    success: function(result) {
+                                                        var no_antrian = JSON.parse(result)[0].id;
+                                                        Swal.fire({
+                                                            icon: 'info',
+                                                            title: 'Antrian ke-' + no_antrian,
+                                                        });
+                                                    }
+                                                });
+                                            } else {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Gagal mengambil no antrian',
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: "<?= base_url('pasien/delete_all_antrian'); ?>",
+                            success: function() {
+                                $.ajax({
+                                    url: "<?= base_url('pasien/create_antrian'); ?>",
+                                    data: {tgl: tgl},
+                                    method: 'POST',
+                                    success: function(result) {
+                                        if (result == 1) {
+                                            $.ajax({
+                                                url: "<?= base_url('pasien/read_antrian_from_id_user'); ?>",
+                                                data: {id_user: "<?= $this->session->userdata('id_user'); ?>",},
+                                                method: 'POST',
+                                                success: function(result) {
+                                                    var no_antrian = JSON.parse(result)[0].id;
+                                                    Swal.fire({
+                                                        icon: 'info',
+                                                        title: 'Antrian ke-' + no_antrian,
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Gagal mengambil no antrian',
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                } else {
+                    $.ajax({
+                        url: "<?= base_url('pasien/create_antrian'); ?>",
+                        data: {tgl: tgl},
+                        method: 'POST',
+                        success: function(result) {
+                            if (result == 1) {
+                                $.ajax({
+                                    url: "<?= base_url('pasien/read_antrian_from_id_user'); ?>",
+                                    data: {id_user: "<?= $this->session->userdata('id_user'); ?>",},
+                                    method: 'POST',
+                                    success: function(result) {
+                                        var no_antrian = JSON.parse(result)[0].id;
+                                        Swal.fire({
+                                            icon: 'info',
+                                            title: 'Antrian ke-' + no_antrian,
+                                        });
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal mengambil no antrian',
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+    });
+
+    $("button#print_data_rekap_pasien").click(function() {
+        var data = $('#tabel_rekap_medis').DataTable().rows( { selected: true } ).data().toArray()[0];
+        $.redirect("<?= base_url('pasien/print_data_rekap_pasien'); ?>", {
+            "id_pasien": data.id_pasien,
+            "no_kartu": data.no_kartu,
+            "nama_kk": data.nama_kk,
+            "id_rekam_medik": data.id_rekam_medik,
+        }, "POST", "_blank");
+        
     });
 
 });

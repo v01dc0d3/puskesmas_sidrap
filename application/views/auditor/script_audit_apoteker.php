@@ -35,7 +35,7 @@ $('#myTable').on('click', 'button#edit_resep_obat', function() {
             $('input#nama_pasien').val(data.nama_kk);
             $('input#tgl').val(data.tgl);
 
-            $('textarea#resep').summernote({height: 200,});
+            $('textarea#resep').summernote({height: 200, toolbar: false});
             $('textarea#resep').summernote("disable");
             $('textarea#resep').summernote("code", data.resep);
 
