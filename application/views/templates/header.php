@@ -14,8 +14,7 @@
 
     <!-- bootstrap 5 -->
     <link href="<?= base_url(); ?>assets/bootstrap5/css/bootstrap.css" rel="stylesheet">
-    <script src="<?= base_url(); ?>assets/bootstrap5/js/bootstrap.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="<?= base_url(); ?>assets/bootstrap5/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>assets/sb_admin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

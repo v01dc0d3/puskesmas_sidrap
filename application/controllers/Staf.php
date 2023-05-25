@@ -22,6 +22,7 @@ class Staf extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
+        $this->load->view('templates/script_js/script_topbar');
 		$this->load->view('staf/index', $data);
 		$this->load->view('staf/script');
         $this->load->view('templates/footer');

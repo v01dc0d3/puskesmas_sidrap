@@ -22,4 +22,24 @@ class User extends CI_Model {
         $sql = "SELECT id, nama_kk FROM pasien WHERE email='". $email ."' AND password='". $password ."'";
         return $this->db->query($sql)->result_array();
     }
+
+    public function update_profil_pegawai() {
+        $sql = "UPDATE user SET full_name='". $_POST['full_name'] ."', no_hp='". $_POST['no_hp'] ."' WHERE id='". $_POST['id_user'] ."';";
+        $this->db->query($sql);
+        return $this->db->affected_rows();
+    }
+
+    public function update_profil_pasien() {
+        $sql = "UPDATE user SET email='". $_POST['email'] ."', full_name='". $_POST['nama_kk'] ."', no_hp='". $_POST['no_hp'] ."' WHERE id='". $_POST['id_user'] ."' AND id_role='6';";
+        $this->db->query($sql);
+
+        $sql = "UPDATE pasien SET nama_kk='". $_POST['nama_kk'] ."', nama='". $_POST['nama'] ."', tanggal_lahir='". $_POST['tanggal_lahir'] ."', alamat='". $_POST['alamat'] ."', jenis_kelamin='". $_POST['jenis_kelamin'] ."', pekerjaan='". $_POST['pekerjaan'] ."', agama='". $_POST['agama'] ."', no_hp='". $_POST['no_hp'] ."', umur='". $_POST['umur'] ."', email='". $_POST['email'] ."' WHERE id='". $_POST['id_pasien'] ."';";
+        $this->db->query($sql);
+        return $this->db->affected_rows();
+    }
+
+    public function get_data_pasien() {
+        $sql = "SELECT * FROM pasien WHERE id='". $this->session->userdata('id_pasien') ."';";
+        return $this->db->query($sql)->result_array();
+    }
 }

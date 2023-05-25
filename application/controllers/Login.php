@@ -25,30 +25,16 @@ class Login extends CI_Controller {
 				if ($data_user['id_role'] == '6') {
 					$nama_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['nama_kk'];
 					$id_pasien = $this->User->get_nama_pasien_from_email_and_pass($data_user['email'], $data_user['password'])[0]['id'];
-					$no_antrian = $this->M_antrian->read_antrian_from_id_user($data_user['id']);
 					if(!empty($nama_pasien) || !empty($id_pasien)) {
-						if (count($no_antrian) == 0) {
-							$this->session->set_userdata([
-								'id_user' => $data_user['id'],
-								'id_role' => $data_user['id_role'],
-								'email' => $data_user['email'],
-								'rolename' => $rolename,
-								'login' => "true",
-								'nama_kk' => $nama_pasien,
-								'id_pasien' => $id_pasien,
-							]);
-						} else {
-							$this->session->set_userdata([
-								'id_user' => $data_user['id'],
-								'id_role' => $data_user['id_role'],
-								'email' => $data_user['email'],
-								'rolename' => $rolename,
-								'login' => "true",
-								'nama_kk' => $nama_pasien,
-								'id_pasien' => $id_pasien,
-								// 'no_antrian' => $no_antrian[0]['id'],
-							]);
-						}
+						$this->session->set_userdata([
+							'id_user' => $data_user['id'],
+							'id_role' => $data_user['id_role'],
+							'email' => $data_user['email'],
+							'rolename' => $rolename,
+							'login' => "true",
+							'nama_kk' => $nama_pasien,
+							'id_pasien' => $id_pasien,
+						]);
 					}
 				} else {
 					$this->session->set_userdata([
@@ -57,6 +43,8 @@ class Login extends CI_Controller {
 						'email' => $data_user['email'],
 						'rolename' => $rolename,
 						'login' => "true",
+						'full_name' => $data_user['full_name'],
+						'no_hp' => $data_user['no_hp'],
 					]);
 				}
 			}

@@ -22,6 +22,7 @@ class Perawat extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
+        $this->load->view('templates/script_js/script_topbar');
 		$this->load->view('perawat/index', $data);
 		$this->load->view('perawat/script');
         $this->load->view('templates/footer');
