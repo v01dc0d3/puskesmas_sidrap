@@ -7,9 +7,12 @@ class Rekap_medis extends CI_Model {
         $id_rekam_medik = $_POST['id_rekam_medik'];
         $id_ruang = $_POST['id_ruang'];
         $tgl = $_POST['tgl'];
-        $kajian = $_POST['kajian'];
+        $kajian_subjektif = $_POST['kajian_subjektif'];
+        $kajian_objektif = $_POST['kajian_objektif'];
+        $asuhan = $_POST['asuhan'];
+        $paraf_paramedis = $_POST['paraf_paramedis'];
         
-        $sql = "INSERT INTO rekap_medis(id, id_rekam_medik, tgl, id_ruang, kajian) VALUES (NULL, '". $id_rekam_medik ."', '". $tgl ."', '". $id_ruang ."', '". $kajian ."');";
+        $sql = "INSERT INTO rekap_medis(id, id_rekam_medik, tgl, id_ruang, kajian_subjektif, kajian_objektif, asuhan, paraf_paramedis) VALUES (NULL, '". $id_rekam_medik ."', '". $tgl ."', '". $id_ruang ."', '". $kajian_subjektif ."', '". $kajian_objektif ."', '". $asuhan ."', '". $paraf_paramedis ."');";
         $this->db->query($sql);
 
         return $this->db->affected_rows();
@@ -30,9 +33,12 @@ class Rekap_medis extends CI_Model {
     {
         $id_ruang = $_POST['id_ruang'];
         $tgl = $_POST['tgl'];
-        $kajian = $_POST['kajian'];
+        $kajian_subjektif = $_POST['kajian_subjektif'];
+        $kajian_objektif = $_POST['kajian_objektif'];
+        $asuhan = $_POST['asuhan'];
+        $paraf_paramedis = $_POST['paraf_paramedis'];
 
-        $sql = "UPDATE rekap_medis SET id_ruang='". $id_ruang ."', tgl='". $tgl ."', kajian='". $kajian ."' WHERE id='". $id ."';";
+        $sql = "UPDATE rekap_medis SET id_ruang='". $id_ruang ."', tgl='". $tgl ."', kajian_subjektif='". $kajian_subjektif ."', kajian_objektif='". $kajian_objektif ."', asuhan='". $asuhan ."', paraf_paramedis='". $paraf_paramedis ."' WHERE id='". $id ."';";
         $this->db->query($sql);
 
         return $this->db->affected_rows();
@@ -45,7 +51,7 @@ class Rekap_medis extends CI_Model {
     }
 
     public function get_all_rekap_medis_group() {
-        $sql = "SELECT rms.id_rekam_medik, p.nama_kk, rmk.no_kartu, rmk.id_pasien FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id GROUP BY rmk.id_pasien;";
+        $sql = "SELECT rms.id_rekam_medik, rms.tgl, p.nama_kk, rmk.no_kartu, rmk.id_pasien FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id GROUP BY rmk.id_pasien;";
         return $this->db->query($sql)->result_array();
     }
 
@@ -55,7 +61,7 @@ class Rekap_medis extends CI_Model {
     }
 
     public function edit_data_rekap_pasien() {
-        $sql = "UPDATE rekap_medis SET anam_pem_fisik='". $_POST['anam_pem_fisik'] ."', diagnosis='". $_POST['diagnosis'] ."', terapi='". $_POST['terapi'] ."', asuhan='". $_POST['asuhan'] ."', icd='". $_POST['icd'] ."', id_petugas='0' WHERE id='". $_POST['id'] ."' AND id_rekam_medik='". $_POST['id_rekam_medik'] ."' AND tgl='". $_POST['tgl'] ."' AND id_ruang='". $_POST['id_ruang'] ."' AND kajian='". $_POST['kajian'] ."';";
+        $sql = "UPDATE rekap_medis SET anam_pem_fisik='". $_POST['anam_pem_fisik'] ."', diagnosis='". $_POST['diagnosis'] ."', terapi='". $_POST['terapi'] ."', icd='". $_POST['icd'] ."', id_petugas='0', paraf_medis='". $_POST['paraf_medis'] ."' WHERE id='". $_POST['id'] ."' AND id_rekam_medik='". $_POST['id_rekam_medik'] ."' AND tgl='". $_POST['tgl'] ."' AND id_ruang='". $_POST['id_ruang'] ."';";
         $this->db->query($sql);
         return $this->db->affected_rows();
     }

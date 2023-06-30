@@ -1,16 +1,35 @@
 <div class="modal-body">
     <div class="mb-3">
-        <label for="pilih_pasien" class="form-label">Nama Pasien</label>
+        <label for="pilih_pasien" class="form-label">Pilih Pasien</label>
         <select class="form-select" aria-label="pilih_pasien" id="pilih_pasien" disabled></select>
     </div>
 
     <div class="mb-3">
-        <label for="pilih_ruang" class="form-label">Nama Ruang</label>
+        <label for="pilih_ruang" class="form-label">Pilih Ruang</label>
         <select class="form-select" aria-label="pilih_ruang" id="pilih_ruang" disabled></select>
     </div>
 
     <div class="mb-3">
-        <label for="kajian">Kajian Paramedis (Data Fokus)</label>
-        <textarea class="form-control" placeholder="Leave a comment here" id="kajian" style="height: 300px" disabled></textarea>
+        <label for="kajian_subjektif">Kajian Subjektif</label>
+        <textarea class="form-control" placeholder="Leave a comment here" id="kajian_subjektif" style="height: 300px" disabled></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="kajian_objektif">Kajian Objektif</label>
+        <textarea class="form-control" placeholder="Leave a comment here" id="kajian_objektif" style="height: 300px" disabled></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="asuhan">Asuhan Keperawatan/Kebidanan</label>
+        <textarea class="form-control" placeholder="Leave a comment here" id="asuhan" style="height: 300px" disabled></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="paraf_paramedis">Paraf Paramedis</label>
+        <select class="form-select" name="paraf_paramedis" id="paraf_paramedis" disabled>
+            <option selected disabled value="">Pilih Paraf Paramedis</option>
+            <option value="terima">Terima</option>
+            <option value="tolak">Tolak</option>
+        </select>
     </div>
 </div>

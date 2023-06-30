@@ -3,14 +3,14 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= $this->session->userdata('nama_kk'); ?></h1>
+    <h1 class="h3 mb-0 text-gray-800"><?= $nama_kk; ?></h1>
 </div>
 
 <!-- Content Row -->
 <div class="row">
     <div class="col-md-6 my-3">
-        <button type="button" class="btn btn-success" id="ambil_antrian">
-            Ambil Antrian
+        <button type="button" class="btn btn-danger" id="kembali_ke_data_staf">
+            <i class="fa-solid fa-chevron-left"></i>
         </button>
         <button type="button" class="btn btn-info" id="print_data_rekap_pasien">
             <i class="fa-solid fa-print"></i>

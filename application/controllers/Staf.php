@@ -101,4 +101,59 @@ class Staf extends CI_Controller {
         echo $this->Rekam_medik->edit_data_rekam();
     }
 
+    public function cek_tgl_antrian() {
+        $this->load->model("M_antrian");
+        echo json_encode($this->M_antrian->cek_tgl_antrian());
+    }
+
+    public function create_antrian() {
+        $this->load->model("M_antrian");
+        echo json_encode($this->M_antrian->create_antrian());
+    }
+
+    public function delete_all_antrian() {
+        $this->load->model("M_antrian");
+        $this->M_antrian->delete_all_antrian();
+    }
+
+    public function atur_pengguna() {
+        $data['title'] = "Atur Pengguna";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('templates/script_js/script_topbar');
+		$this->load->view('staf/atur_pengguna', $data);
+		$this->load->view('staf/script_atur_pengguna');
+        $this->load->view('templates/footer');
+    }
+
+    public function get_all_role_full_name_for_staf() {
+        $this->load->model("Pasien");
+        echo json_encode($this->Pasien->get_all_role_full_name_for_staf());
+    }
+
+    public function modal_body_edit_pengguna() {
+        $this->load->model("Pasien");
+        $data['roles'] = $this->Pasien->get_all_roles_for_staf();
+
+        $data["modal_id"] = "modal_edit_pengguna";
+        $data["modal_label"] = "modal_label_edit_pengguna";
+        $data["modal_title"] = "Edit pengguna";
+
+        $this->load->view('templates/modal/modal_header', $data);
+        $this->load->view('staf/modal/edit_pengguna', $data);
+        $this->load->view('templates/modal/modal_footer');
+    }
+
+    public function update_pengguna_for_staf() {
+        $this->load->model("Pasien");
+        echo $this->Pasien->update_pengguna_for_staf();
+    }
+
+    public function delete_pengguna_for_staf($id) {
+        $this->load->model("Pasien");
+        echo $this->Pasien->delete_pengguna_for_staf($id);
+    }
+
 }

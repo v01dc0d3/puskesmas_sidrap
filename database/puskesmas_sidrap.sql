@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 08:14 AM
+-- Generation Time: Jun 30, 2023 at 03:26 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -38,7 +38,9 @@ CREATE TABLE `antrian` (
 --
 
 INSERT INTO `antrian` (`id`, `id_user`, `tgl`) VALUES
-(1, 5, '2023-05-26');
+(1, 7, '2023-06-30'),
+(2, 7, '2023-06-30'),
+(3, 7, '2023-06-30');
 
 -- --------------------------------------------------------
 
@@ -113,12 +115,14 @@ INSERT INTO `page_access` (`id`, `id_role`, `id_page`) VALUES
 (26, 6, 8),
 (27, 6, 9),
 (28, 6, 10),
-(29, 6, 11),
 (30, 7, 7),
 (31, 7, 8),
 (32, 7, 9),
 (33, 7, 10),
-(35, 7, 4);
+(35, 7, 4),
+(36, 2, 11),
+(37, 2, 6),
+(39, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -197,22 +201,28 @@ CREATE TABLE `rekap_medis` (
   `asuhan` longtext DEFAULT NULL,
   `icd` longtext DEFAULT NULL,
   `id_petugas` int(11) DEFAULT NULL,
-  `kajian` longtext DEFAULT NULL
+  `kajian_subjektif` longtext DEFAULT NULL,
+  `kajian_objektif` varchar(255) DEFAULT NULL,
+  `paraf_paramedis` enum('terima','tolak','-') DEFAULT NULL,
+  `paraf_medis` enum('terima','tolak','-') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rekap_medis`
 --
 
-INSERT INTO `rekap_medis` (`id`, `id_rekam_medik`, `tgl`, `id_ruang`, `anam_pem_fisik`, `diagnosis`, `terapi`, `asuhan`, `icd`, `id_petugas`, `kajian`) VALUES
-(7, 3, '20/4/2023', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'asdadas21321321321'),
-(8, 3, '20/4/2023', 1, 'Anamnesis 1 Contoh', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', 'Belum ada Asuhan Keperawatan / Kebidanan', 'Belum ada ICD X', 0, 'Sakit'),
-(9, 4, '16/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>sdasdas</p>'),
-(10, 4, '16/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dasdasda</p>'),
-(15, 6, '17/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>ASDasdadasdsadas</p>'),
-(16, 3, '17/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dsadasdasd</p>'),
-(18, 7, '18/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>Okeokeokekeoke</p>'),
-(19, 7, '20/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>adsasdas1234</p>');
+INSERT INTO `rekap_medis` (`id`, `id_rekam_medik`, `tgl`, `id_ruang`, `anam_pem_fisik`, `diagnosis`, `terapi`, `asuhan`, `icd`, `id_petugas`, `kajian_subjektif`, `kajian_objektif`, `paraf_paramedis`, `paraf_medis`) VALUES
+(7, 3, '20/4/2023', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'asdadas21321321321', NULL, NULL, NULL),
+(8, 3, '20/4/2023', 1, 'Anamnesis 1 Contoh', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', 'Belum ada Asuhan Keperawatan / Kebidanan', 'Belum ada ICD X', 0, 'Sakit', NULL, NULL, NULL),
+(9, 4, '16/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>sdasdas</p>', NULL, NULL, NULL),
+(10, 4, '16/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dasdasda</p>', NULL, NULL, NULL),
+(15, 6, '17/4/2023', 2, 'asdasas123123321321', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', NULL, 'Belum ada ICD X', 0, '<p>ASDasdadasdsadas</p>', NULL, NULL, NULL),
+(16, 3, '17/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dsadasdasd</p>', NULL, NULL, NULL),
+(18, 7, '18/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>Okeokeokekeoke</p>', NULL, NULL, NULL),
+(19, 7, '20/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>adsasdas1234</p>', NULL, NULL, NULL),
+(20, 7, '30/5/2023', 1, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dasdasdsa</p>', '<p>dasdasda</p>', NULL, NULL),
+(21, 7, '30/5/2023', 2, NULL, NULL, NULL, '<p>dadasdadasd</p>', NULL, NULL, '<p>dasdas</p>', '<p>dsadasd</p>', NULL, NULL),
+(22, 7, '30/5/2023', 1, 'Belum ada Anamnesis (S) &amp; Pemeriksaan Fisik (O)', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', '<p>dsadasdas</p>', 'Belum ada ICD X', 0, '<p>dsadadas</p>', '<p>dsadasd</p>', 'tolak', 'terima');
 
 -- --------------------------------------------------------
 
@@ -306,11 +316,12 @@ INSERT INTO `user` (`id`, `id_role`, `email`, `password`, `full_name`, `no_hp`) 
 (4, 6, 'adnan@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Muhammad Adnan Surya Azis', '082345779012'),
 (5, 6, 'anonyrmoust@gmail.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
 (6, 1, 'admin@gmail.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
-(7, 2, 'staf@gmail.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
+(7, 2, 'staf@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'dasdasdasd', '3221312312'),
 (8, 3, 'dokter@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Dr. Paijo', '081919191919'),
 (9, 4, 'perawat@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Rungkad', '12345678'),
 (10, 5, 'apoteker@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My Name is Apoteker', '088888888888'),
-(11, 7, 'auditor@gmail.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL);
+(11, 7, 'auditor@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'auditor123', '0821389123291'),
+(14, 2, 'testingemailstaf@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My name is testing staf', '081943783411');
 
 --
 -- Indexes for dumped tables
@@ -384,7 +395,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `antrian`
 --
 ALTER TABLE `antrian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `page`
@@ -396,7 +407,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT for table `page_access`
 --
 ALTER TABLE `page_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `pasien`
@@ -414,7 +425,7 @@ ALTER TABLE `rekam_medik`
 -- AUTO_INCREMENT for table `rekap_medis`
 --
 ALTER TABLE `rekap_medis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `resep_obat`
@@ -438,7 +449,7 @@ ALTER TABLE `ruang`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

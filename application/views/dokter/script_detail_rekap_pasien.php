@@ -1,8 +1,16 @@
 <script>
 $(document).ready(function() {
-    $('textarea#kajian').summernote({height: 200, toolbar: false});
-    $('textarea#kajian').summernote("disable");
-    $('textarea#kajian').summernote("code", '<?= $kajian; ?>');
+    $('textarea#kajian_subjektif').summernote({height: 200, toolbar: false});
+    $('textarea#kajian_subjektif').summernote("disable");
+    $('textarea#kajian_subjektif').summernote("code", '<?= $kajian_subjektif; ?>');
+
+    $('textarea#kajian_objektif').summernote({height: 200, toolbar: false});
+    $('textarea#kajian_objektif').summernote("disable");
+    $('textarea#kajian_objektif').summernote("code", '<?= $kajian_objektif; ?>');
+
+    $('textarea#asuhan').summernote({height: 200, toolbar: false});
+    $('textarea#asuhan').summernote("disable");
+    $('textarea#asuhan').summernote("code", '<?= $asuhan; ?>');
 
     $('textarea#anam_pem_fisik').summernote({height: 200, toolbar: false});
     $('textarea#anam_pem_fisik').summernote("disable");
@@ -16,13 +24,12 @@ $(document).ready(function() {
     $('textarea#terapi').summernote("disable");
     $('textarea#terapi').summernote("code", '<?= $terapi; ?>');
 
-    $('textarea#asuhan').summernote({height: 200, toolbar: false});
-    $('textarea#asuhan').summernote("disable");
-    $('textarea#asuhan').summernote("code", '<?= $asuhan; ?>');
-
     $('textarea#icd').summernote({height: 200, toolbar: false});
     $('textarea#icd').summernote("disable");
     $('textarea#icd').summernote("code", '<?= $icd; ?>');
+
+    $('select#paraf_paramedis').val('<?= $paraf_paramedis; ?>');
+    $('select#paraf_medis').val('<?= $paraf_medis; ?>');
 
     $("button#kembali_ke_rekap_pasien").click(function() {
         $.redirect("<?= base_url('dokter/detail/'); ?>", {

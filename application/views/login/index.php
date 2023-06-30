@@ -50,9 +50,6 @@
                             <div class="text-center">
                                 <a class="small" href="<?= base_url('lupa_password'); ?>">Lupa Password?</a>
                             </div>
-                            <div class="text-center">
-                                <a class="small" href="<?= base_url('register'); ?>">Buat Akun!</a>
-                            </div>
                         </div>
                     </div>
                 </div>

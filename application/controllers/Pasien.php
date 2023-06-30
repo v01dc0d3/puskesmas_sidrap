@@ -17,6 +17,8 @@ class Pasien extends CI_Controller {
 
 	public function index()
 	{
+        $data['id_pasien'] = $_POST['id_pasien'];
+        $data['nama_kk'] = $_POST['nama_kk'];
         $data['title'] = "Pasien";
 
         $this->load->view('templates/header', $data);
@@ -115,4 +117,5 @@ class Pasien extends CI_Controller {
         $this->load->model("M_antrian");
         $this->M_antrian->delete_all_antrian();
     }
+
 }

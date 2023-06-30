@@ -25,7 +25,10 @@ $(document).ready(function() {
     $('textarea#icd').summernote("code", '<?= $icd; ?>');
 
     $("button#kembali_ke_pasien").click(function() {
-        window.location.replace("<?= base_url('pasien'); ?>");
+        $.redirect("<?= base_url('pasien/'); ?>", {
+            id_pasien: String("<?= $id_pasien; ?>"),
+            nama_kk: String("<?= $nama_kk; ?>"),
+        });
     });
 
 });

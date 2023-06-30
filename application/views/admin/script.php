@@ -128,5 +128,9 @@ $(document).ready(function() {
         });
     });
 
+    $("button#atur_staf").click(function() {
+        window.location.replace("<?= base_url('admin/atur_staf') ?>");
+    });
+
 });
 </script>

@@ -8,7 +8,7 @@ $(document).ready(function() {
         "ajax": {
             "url": "<?= base_url('pasien/get_all_rekap_medis_by_id_pasien'); ?>",
             "method": 'POST',
-            "data": {"id_pasien": "<?= $this->session->userdata('id_pasien'); ?>"},
+            "data": {"id_pasien": "<?= $id_pasien; ?>"},
             "dataSrc": function(result) {
                 return result;
             },
@@ -33,7 +33,7 @@ $(document).ready(function() {
         "ajax": {
             "url": "<?= base_url('pasien/get_all_rekam_medik_by_id_pasien'); ?>",
             "method": 'POST',
-            "data": {"id_pasien": "<?= $this->session->userdata('id_pasien'); ?>"},
+            "data": {"id_pasien": "<?= $id_pasien; ?>"},
             "dataSrc": function(result) {
                 return result;
             },
@@ -232,6 +232,10 @@ $(document).ready(function() {
             "id_rekam_medik": data.id_rekam_medik,
         }, "POST", "_blank");
         
+    });
+
+    $("button#kembali_ke_data_staf").click(function() {
+        window.location.replace("<?= base_url('staf/'); ?>");
     });
 
 });

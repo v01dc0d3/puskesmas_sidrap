@@ -32,18 +32,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="nama">Nama Panggilan</label>
-                                <input required type="text" class="form-control form-control-user" id="nama" aria-describedby="nama_help" placeholder="Masukkan nama..">
-                            </div>
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input required type="text" class="form-control form-control-user" id="alamat" aria-describedby="alamat_help" placeholder="Masukkan alamat..">
-                            </div>
-                            <div class="form-group">
-                                <label for="pekerjaan">Pekerjaan</label>
-                                <input required type="text" class="form-control form-control-user" id="pekerjaan" aria-describedby="pekerjaan_help" placeholder="Masukkan pekerjaan..">
-                            </div>
-                            <div class="form-group">
                                 <label for="no_hp">No. HP</label>
                                 <input required type="text" class="form-control form-control-user" id="no_hp" aria-describedby="no_hp_help" placeholder="Masukkan no_hp..">
                             </div>
@@ -64,32 +52,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input required type="date" class="form-control form-control-user" id="tanggal_lahir" aria-describedby="tanggal_lahir_help" placeholder="Masukkan tanggal_lahir..">
-                            </div>
-                            <div class="form-group">
-                                <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <select class="form-select" name="jenis_kelamin" id="jenis_kelamin">
-                                    <option selected disabled value="">Pilih Jenis Kelamin</option>
-                                    <option value="pria">Pria</option>
-                                    <option value="wanita">Wanita</option>
+                                <label for="role">Role</label>
+                                <select class="form-select" name="role" id="role">
+                                    <option selected disabled value="">Pilih Role</option>
+                                    <?php foreach($roles as $role) : ?>
+                                    <option value="<?= $role['id']; ?>"><?= ucfirst($role['rolename']); ?></option>
+                                    <?php endforeach; ?>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="agama">Agama</label>
-                                <select class="form-select" name="agama" id="agama">
-                                    <option selected disabled value="">Pilih Agama</option>
-                                    <option value="islam">Islam</option>
-                                    <option value="kristen">Kristen</option>
-                                    <option value="hindu">Hindu</option>
-                                    <option value="budha">Budha</option>
-                                    <option value="katolik">Katolik</option>
-                                    <option value="konghuchu">Konghuchu</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="umur">Umur</label>
-                                <input required type="number" class="form-control form-control-user" id="umur" aria-describedby="umur_help" placeholder="Masukkan umur..">
                             </div>
                         </div>
                     </div>
@@ -111,7 +80,7 @@
                                 <a class="small" href="<?= base_url('lupa_password'); ?>">Lupa Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('staf'); ?>">Kembali ke halaman staf</a>
+                                <a class="small" href="<?= base_url('staf/atur_pengguna'); ?>">Kembali ke halaman staf</a>
                             </div>
                         </div>
                     </div>

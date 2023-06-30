@@ -11,7 +11,7 @@ $(document).ready(function() {
             },
         },
         "columns": [
-            { "data": "no_kartu" },
+            { "data": "tgl" },
             { "data": "nama_kk" },
             { 
                 "data": null,

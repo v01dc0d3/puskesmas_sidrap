@@ -17,8 +17,9 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "tgl" },
-            { "data": "nama_kk" },
-            { "data": "kajian" },
+            { "data": "kajian_subjektif" },
+            { "data": "kajian_objektif" },
+            { "data": "asuhan" },
             { 
                 "data": null,
                 "render": function ( data, type, row ) {
@@ -35,7 +36,8 @@ $(document).ready(function() {
             id: data.id, 
             nama_kk: data.nama_kk, 
             tgl: data.tgl,
-            kajian: String(data.kajian),
+            kajian_subjektif: (data.kajian_subjektif == null) ? "Belum ada Kajian Subjektif" : data.kajian_subjektif,
+            kajian_objektif: (data.kajian_objektif == null) ? "Belum ada Kajian Objektif" : data.kajian_objektif,
             anam_pem_fisik: (data.anam_pem_fisik == null) ? "Belum ada Anamnesis (S) & Pemeriksaan Fisik (O)" : data.anam_pem_fisik,
             diagnosis: (data.diagnosis == null) ? "Belum ada Diagnosis (A)" : data.diagnosis,
             terapi: (data.terapi == null) ? "Belum ada Terapi (P)" : data.terapi,
@@ -46,17 +48,21 @@ $(document).ready(function() {
             nama_ruang: data.nama_ruang,
             id_rekam_medik: data.id_rekam_medik,
             no_kartu: data.no_kartu,
+            paraf_medis: (data.paraf_medis == null) ? "-" : data.paraf_medis,
+            paraf_paramedis: (data.paraf_paramedis == null) ? "-" : data.paraf_paramedis,
         });
     });
 
     $('#myTable').on('click', 'button#data_rekap_update', function() {
         var data = table.row($(this).parents('tr')).data();
+        console.log(data);
 
         $.redirect("<?= base_url('dokter/edit_rekap_pasien/'); ?>", {
             id: data.id, 
             nama_kk: data.nama_kk, 
             tgl: String(data.tgl),
-            kajian: String(data.kajian),
+            kajian_subjektif: (data.kajian_subjektif == null) ? "Belum ada Kajian Subjektif" : data.kajian_subjektif,
+            kajian_objektif: (data.kajian_objektif == null) ? "Belum ada Kajian Objektif" : data.kajian_objektif,
             anam_pem_fisik: (data.anam_pem_fisik == null) ? "Belum ada Anamnesis (S) & Pemeriksaan Fisik (O)" : data.anam_pem_fisik,
             diagnosis: (data.diagnosis == null) ? "Belum ada Diagnosis (A)" : data.diagnosis,
             terapi: (data.terapi == null) ? "Belum ada Terapi (P)" : data.terapi,
@@ -67,6 +73,8 @@ $(document).ready(function() {
             nama_ruang: data.nama_ruang,
             id_rekam_medik: data.id_rekam_medik,
             no_kartu: data.no_kartu,
+            paraf_medis: (data.paraf_medis == null) ? "-" : data.paraf_medis,
+            paraf_paramedis: (data.paraf_paramedis == null) ? "-" : data.paraf_paramedis,
         });
     });
 

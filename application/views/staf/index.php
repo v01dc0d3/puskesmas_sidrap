@@ -7,6 +7,20 @@
 </div>
 
 <div class="row">
+    <div class="col-md-6 my-3">
+        <button type="button" class="btn btn-success" id="tambah_pasien">
+            Tambah Pasien
+        </button>
+        <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
+            Atur Pengguna
+        </button>
+        <button type="button" class="btn btn-primary" id="ambil_antrian">
+            Ambil Antrian
+        </button>
+    </div>
+</div>
+
+<div class="row">
 
     <div class="col-md-12">
         <table id="myTable" class="display table">

@@ -45,7 +45,11 @@ $(document).ready(function() {
                 $('select#pilih_ruang').select2({theme: "bootstrap", dropdownParent: $('#modal_edit_rekap .modal-content'), placeholder: "Nama Ruang"});
                 $("select#pilih_ruang").empty();
 
-                $('textarea#kajian').summernote("code", data.kajian);
+                $('textarea#kajian_subjektif').summernote("code", data.kajian_subjektif);
+                $('textarea#kajian_objektif').summernote("code", data.kajian_objektif);
+                $('textarea#asuhan').summernote("code", data.asuhan);
+
+                $("select#paraf_paramedis").val(data.paraf_paramedis);
 
                 $.ajax({
                     url: '<?= base_url("perawat/get_data_rekam_medik_by_id/") ?>' + data.id,
@@ -89,7 +93,10 @@ $(document).ready(function() {
                 $("button#tombol_edit_rekap").click(function() {
                     let pasien = $('select#pilih_pasien').val();
                     let ruang = $('select#pilih_ruang').val();
-                    let kajian = $('textarea#kajian').val();
+                    let kajian_subjektif = $('textarea#kajian_subjektif').val();
+                    let kajian_objektif = $('textarea#kajian_objektif').val();
+                    let asuhan = $('textarea#asuhan').val();
+                    let paraf_paramedis = $('select#paraf_paramedis').val();
 
                     let tgl = new Date();
                     tgl = tgl.getDate() + "/" + tgl.getMonth() + "/" + tgl.getFullYear();
@@ -99,7 +106,10 @@ $(document).ready(function() {
                         method: 'POST',
                         data: {
                             'id_ruang': ruang,
-                            'kajian': kajian,
+                            'kajian_subjektif': kajian_subjektif,
+                            'kajian_objektif': kajian_objektif,
+                            'asuhan': asuhan,
+                            'paraf_paramedis': paraf_paramedis,
                             'tgl': tgl,
                         },
                         success: function(result) {
@@ -172,9 +182,19 @@ $(document).ready(function() {
                 $('select#pilih_ruang').select2({theme: "bootstrap", dropdownParent: $('#modal_detail_rekap .modal-content'), placeholder: "Nama Ruang"});
                 $("select#pilih_ruang").empty();
 
-                $('textarea#kajian').summernote({height: 200, toolbar: false});
-                $('textarea#kajian').summernote("disable");
-                $('textarea#kajian').summernote("code", data.kajian);
+                $('textarea#kajian_subjektif').summernote({height: 200, toolbar: false});
+                $('textarea#kajian_subjektif').summernote("disable");
+                $('textarea#kajian_subjektif').summernote("code", data.kajian_subjektif);
+
+                $('textarea#kajian_objektif').summernote({height: 200, toolbar: false});
+                $('textarea#kajian_objektif').summernote("disable");
+                $('textarea#kajian_objektif').summernote("code", data.kajian_objektif);
+
+                $('textarea#asuhan').summernote({height: 200, toolbar: false});
+                $('textarea#asuhan').summernote("disable");
+                $('textarea#asuhan').summernote("code", data.asuhan);
+
+                $("select#paraf_paramedis").val(data.paraf_paramedis);
 
                 $.ajax({
                     url: '<?= base_url("perawat/get_data_rekam_medik_by_id/"); ?>' + data.id,
@@ -232,7 +252,9 @@ $(document).ready(function() {
                 $('select#pilih_ruang').select2({theme: "bootstrap", dropdownParent: $('#modal_tambah_rekap .modal-content'), placeholder: "Nama Ruang"});
                 $("select#pilih_ruang").empty();
 
-                $('textarea#kajian').summernote();
+                $('textarea#kajian_subjektif').summernote();
+                $('textarea#kajian_objektif').summernote();
+                $('textarea#asuhan').summernote();
 
                 $.ajax({
                     url: '<?= base_url("perawat/get_data_pasien"); ?>',
@@ -265,7 +287,10 @@ $(document).ready(function() {
                 $("button#tombol_tambah_rekap").click(function() {
                     let pasien = $('select#pilih_pasien').val();
                     let ruang = $('select#pilih_ruang').val();
-                    let kajian = $('textarea#kajian').val();
+                    let kajian_subjektif = $('textarea#kajian_subjektif').val();
+                    let kajian_objektif = $('textarea#kajian_objektif').val();
+                    let asuhan = $('textarea#asuhan').val();
+                    let paraf_paramedis = $('select#paraf_paramedis').val();
 
                     console.log("asdadsa");
 
@@ -286,7 +311,10 @@ $(document).ready(function() {
                                 data: {
                                     'id_rekam_medik': id_rekam_medik,
                                     'id_ruang': ruang,
-                                    'kajian': kajian,
+                                    'kajian_subjektif': kajian_subjektif,
+                                    'kajian_objektif': kajian_objektif,
+                                    'asuhan': asuhan,
+                                    'paraf_paramedis': paraf_paramedis,
                                     'tgl': tgl,
                                 },
                                 success: function(result) {

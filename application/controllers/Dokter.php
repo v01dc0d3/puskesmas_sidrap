@@ -75,7 +75,8 @@ class Dokter extends CI_Controller {
         $data['nama_kk'] = $_POST['nama_kk'];
         $data['tgl'] = $_POST['tgl'];
         $data['id_ruang'] = $_POST['id_ruang'];
-        $data['kajian'] = $_POST['kajian'];
+        $data['kajian_subjektif'] = $_POST['kajian_subjektif'];
+        $data['kajian_objektif'] = $_POST['kajian_objektif'];
         $data['anam_pem_fisik'] = $_POST['anam_pem_fisik'];
         $data['diagnosis'] = $_POST['diagnosis'];
         $data['terapi'] = $_POST['terapi'];
@@ -86,6 +87,8 @@ class Dokter extends CI_Controller {
         $data['nama_ruang'] = $_POST['nama_ruang'];
         $data['id_rekam_medik'] = $_POST['id_rekam_medik'];
         $data['no_kartu'] = $_POST['no_kartu'];
+        $data['paraf_paramedis'] = $_POST['paraf_paramedis'];
+        $data['paraf_medis'] = $_POST['paraf_medis'];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -112,7 +115,8 @@ class Dokter extends CI_Controller {
         $data['nama_kk'] = $_POST['nama_kk'];
         $data['tgl'] = $_POST['tgl'];
         $data['id_ruang'] = $_POST['id_ruang'];
-        $data['kajian'] = $_POST['kajian'];
+        $data['kajian_subjektif'] = $_POST['kajian_subjektif'];
+        $data['kajian_objektif'] = $_POST['kajian_objektif'];
         $data['anam_pem_fisik'] = $_POST['anam_pem_fisik'];
         $data['diagnosis'] = $_POST['diagnosis'];
         $data['terapi'] = $_POST['terapi'];
@@ -123,6 +127,8 @@ class Dokter extends CI_Controller {
         $data['nama_ruang'] = $_POST['nama_ruang'];
         $data['id_rekam_medik'] = $_POST['id_rekam_medik'];
         $data['no_kartu'] = $_POST['no_kartu'];
+        $data['paraf_paramedis'] = $_POST['paraf_paramedis'];
+        $data['paraf_medis'] = $_POST['paraf_medis'];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

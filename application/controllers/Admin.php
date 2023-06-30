@@ -62,4 +62,45 @@ class Admin extends CI_Controller {
         $this->load->model('M_page_access');
         echo $this->M_page_access->delete_akses();
     }
+
+    public function atur_staf() {
+        $data['title'] = "Atur Staf";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('templates/script_js/script_topbar');
+		$this->load->view('admin/atur_staf', $data);
+		$this->load->view('admin/script_atur_staf');
+        $this->load->view('templates/footer');
+    }
+
+    public function get_all_role_full_name_for_admin() {
+        $this->load->model("Pasien");
+        echo json_encode($this->Pasien->get_all_role_full_name_for_admin());
+    }
+
+    public function modal_body_edit_staf() {
+        $this->load->model("Pasien");
+        $data['roles'] = $this->Pasien->get_all_roles_for_admin();
+
+        $data["modal_id"] = "modal_edit_staf";
+        $data["modal_label"] = "modal_label_edit_staf";
+        $data["modal_title"] = "Edit Staf";
+
+        $this->load->view('templates/modal/modal_header', $data);
+        $this->load->view('admin/modal/edit_staf', $data);
+        $this->load->view('templates/modal/modal_footer');
+    }
+
+    public function update_staf_for_admin() {
+        $this->load->model("Pasien");
+        echo $this->Pasien->update_staf_for_admin();
+    }
+
+    public function delete_pengguna_for_admin($id) {
+        $this->load->model("Pasien");
+        echo $this->Pasien->delete_pengguna_for_staf($id);
+    }
+
 }

@@ -11,7 +11,7 @@ class M_antrian extends CI_Model {
         $sql = "INSERT INTO antrian VALUES (NULL, '". $this->session->userdata('id_user') ."', '". $_POST['tgl'] ."');";
         $this->db->query($sql);
 
-        return $this->db->affected_rows();
+        return $this->db->query("SELECT LAST_INSERT_ID() AS 'no_antrian';")->result_array();
     }
 
     public function read_antrian_from_id_user($id) {
