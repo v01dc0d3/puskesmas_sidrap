@@ -6,7 +6,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fa-solid fa-house-medical-flag"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Puskesmas Sidrap</div>
+    <div class="sidebar-brand-text mx-3">Puskesmas Tanrutedong</div>
 </a>
 
 <!-- Divider -->
