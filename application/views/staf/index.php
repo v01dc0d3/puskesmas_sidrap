@@ -14,9 +14,9 @@
         <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
             Atur Pengguna
         </button>
-        <button type="button" class="btn btn-primary" id="ambil_antrian">
+        <!-- <button type="button" class="btn btn-primary" id="ambil_antrian">
             Ambil Antrian
-        </button>
+        </button> -->
     </div>
 </div>
 

@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="pt-2 px-5 text-center">
-                            <button class="form-control btn btn-primary" id="login">Login</button>
+                            <button class="form-control btn btn-primary" id="kirim">Kirim</button>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <div class="pt-1 pb-4 px-5">
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('forget_password'); ?>">Lupa Password?</a>
+                                <a class="small" href="<?= base_url('login'); ?>">Sudah punya akun?</a>
                             </div>
                         </div>
                     </div>

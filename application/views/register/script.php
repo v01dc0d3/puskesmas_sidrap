@@ -84,7 +84,7 @@ $(document).ready(function() {
                                         showConfirmButton: false,
                                         timer: 1000
                                     }).then((result) => {
-                                        window.location.replace("<?= base_url('login'); ?>");
+                                        window.location.replace("<?= base_url('staf'); ?>");
                                     });
 
                                     
