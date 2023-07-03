@@ -19,6 +19,7 @@ var table = $('#myTable').DataTable({
     "columns": [
         { "data": "tgl" },
         { "data": "no_kartu" },
+        { "data": "nik" },
         { "data": "nama_kk" },
         { 
             "data": null,

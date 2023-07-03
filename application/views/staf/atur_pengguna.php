@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-6 my-3">
-        <button type="button" class="btn btn-danger" id="kembali_ke_staf">
+        <button type="button" class="btn btn-danger" id="kembali_ke_admin">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
         <button type="button" class="btn btn-success" id="tambah_pengguna">

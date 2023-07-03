@@ -51,12 +51,12 @@ class Rekap_medis extends CI_Model {
     }
 
     public function get_all_rekap_medis_group() {
-        $sql = "SELECT rms.id_rekam_medik, rms.tgl, p.nama_kk, rmk.no_kartu, rmk.id_pasien FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id GROUP BY rmk.id_pasien;";
+        $sql = "SELECT rms.id_rekam_medik, rms.tgl, p.nama_kk, p.nik, rmk.no_kartu, rmk.id_pasien FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id GROUP BY rmk.id_pasien;";
         return $this->db->query($sql)->result_array();
     }
 
     public function get_all_rekap_medis_by_id_rekam_medik() {
-        $sql = "SELECT rms.*, p.nama_kk, p.umur, rmk.no_kartu, rmk.id_pasien, r.nama AS 'nama_ruang', r.id AS 'id_ruang' FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id INNER JOIN ruang AS r ON rms.id_ruang = r.id WHERE rmk.id_pasien='". $_POST['id_pasien'] ."' AND rmk.no_kartu='". $_POST['no_kartu'] ."' AND p.nama_kk='". $_POST['nama_kk'] ."' ORDER BY rms.id DESC;";
+        $sql = "SELECT rms.*, p.nama_kk, p.umur, p.nik, rmk.no_kartu, rmk.id_pasien, r.nama AS 'nama_ruang', r.id AS 'id_ruang' FROM rekap_medis AS rms INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id INNER JOIN ruang AS r ON rms.id_ruang = r.id WHERE rmk.id_pasien='". $_POST['id_pasien'] ."' AND rmk.no_kartu='". $_POST['no_kartu'] ."' AND p.nama_kk='". $_POST['nama_kk'] ."' ORDER BY rms.id DESC;";
         return $this->db->query($sql)->result_array();
     }
 

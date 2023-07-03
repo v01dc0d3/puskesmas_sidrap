@@ -11,9 +11,9 @@
         <button type="button" class="btn btn-success" id="tambah_pasien">
             Tambah Pasien
         </button>
-        <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
+        <!-- <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
             Atur Pengguna
-        </button>
+        </button> -->
         <!-- <button type="button" class="btn btn-primary" id="ambil_antrian">
             Ambil Antrian
         </button> -->
@@ -27,6 +27,7 @@
             <thead>
                 <tr>
                     <th>No Kartu</th>
+                    <th>NIK</th>
                     <th>Nama Pasien</th>
                     <th>Aksi</th>
                 </tr>

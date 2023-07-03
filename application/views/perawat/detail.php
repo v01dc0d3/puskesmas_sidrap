@@ -30,6 +30,7 @@
             <thead>
                 <tr>
                     <th>Tgl</th>
+                    <th>NIK</th>
                     <th>Nama Pasien</th>
                     <th>Aksi</th>
                 </tr>

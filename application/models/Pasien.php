@@ -13,7 +13,7 @@ class Pasien extends CI_Model {
         $sql = "INSERT INTO user VALUES (NULL, '6', '". $_POST['email'] ."', '". $password ."', '". $_POST['nama_kk'] ."', '". $_POST['no_hp'] ."');";
         $this->db->query($sql);
 
-        $sql = "INSERT INTO pasien VALUES (NULL, '". $_POST['nama_kk'] ."', '". $_POST['nama'] ."', '". $_POST['tanggal_lahir'] ."', '". $_POST['alamat'] ."', '". $_POST['jenis_kelamin'] ."', '". $_POST['pekerjaan'] ."', '". $_POST['agama'] ."', '". $_POST['no_hp'] ."', '". $_POST['umur'] ."', '". $_POST['email'] ."', '". $password ."');";
+        $sql = "INSERT INTO pasien VALUES (NULL, '". $_POST['nama_kk'] ."', '". $_POST['nama'] ."', '". $_POST['tanggal_lahir'] ."', '". $_POST['alamat'] ."', '". $_POST['jenis_kelamin'] ."', '". $_POST['pekerjaan'] ."', '". $_POST['agama'] ."', '". $_POST['no_hp'] ."', '". $_POST['umur'] ."', '". $_POST['email'] ."', '". $password ."', '". $_POST['nik'] ."');";
         $this->db->query($sql);
 
         return $this->db->affected_rows();

@@ -19,6 +19,7 @@ class Pasien extends CI_Controller {
 	{
         $data['id_pasien'] = $_POST['id_pasien'];
         $data['nama_kk'] = $_POST['nama_kk'];
+        $data['nik'] = $_POST['nik'];
         $data['title'] = "Pasien";
 
         $this->load->view('templates/header', $data);

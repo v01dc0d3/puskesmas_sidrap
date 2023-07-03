@@ -52,6 +52,13 @@ $(document).ready(function() {
                 showConfirmButton: false,
                 timer: 1000
             });
+        } else if ( $("#nik").val() == "" || $("#nik").val().length < 16 || $("#nik").val().length > 16 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Isi no nik dengan benar!',
+                showConfirmButton: false,
+                timer: 1000
+            });
         } else {
             $.ajax({
                 url: "<?= base_url('register/read_email_by_email'); ?>",
@@ -75,6 +82,7 @@ $(document).ready(function() {
                                 "no_hp": $("#no_hp").val(),
                                 "umur": $("#umur").val(),
                                 "password": $("#password").val(),
+                                "nik": $("#nik").val(),
                             },
                             "success": function(result) {
                                 if (result == 1) {

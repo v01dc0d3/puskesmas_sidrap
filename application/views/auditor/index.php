@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>No Kartu</th>
+                    <th>NIK</th>
                     <th>Nama Pasien</th>
                     <th>Aksi</th>
                 </tr>

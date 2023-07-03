@@ -17,6 +17,7 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "tgl" },
+            { "data": "nik" },
             { "data": "nama_kk" },
             { 
                 "data": null,

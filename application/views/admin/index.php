@@ -8,12 +8,15 @@
 
 <!-- Content Row -->
 <div class="row">
-    <div class="col-md-6 my-3">
+    <div class="col-md-8 my-3">
         <button type="button" class="btn btn-success" id="tambah_akses_halaman">
             Tambah Halaman Baru
         </button>
         <button type="button" class="btn btn-primary" id="atur_staf">
             Atur Staf
+        </button>
+        <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
+            Atur Pengguna
         </button>
     </div>
 </div>

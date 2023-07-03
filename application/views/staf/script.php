@@ -11,6 +11,7 @@ var table = $('#myTable').DataTable({
     },
     "columns": [
         { "data": "no_kartu" },
+        { "data": "nik" },
         { "data": "nama_kk" },
         { 
             "data": null,
@@ -26,6 +27,7 @@ $('#myTable').on('click', 'button#data_rekam_atur', function() {
 
     $.redirect("<?= base_url('pasien/'); ?>", {
         nama_kk: data.nama_kk,
+        nik: data.nik,
         id_pasien: data.id_pasien,
     });
 

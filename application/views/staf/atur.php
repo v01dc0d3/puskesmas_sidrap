@@ -26,6 +26,7 @@
                 <tr>
                     <th>Tgl</th>
                     <th>No Kartu</th>
+                    <th>NIK</th>
                     <th>Nama Pasien</th>
                     <th>Aksi</th>
                 </tr>

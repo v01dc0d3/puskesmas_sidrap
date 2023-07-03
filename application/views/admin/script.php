@@ -132,5 +132,9 @@ $(document).ready(function() {
         window.location.replace("<?= base_url('admin/atur_staf') ?>");
     });
 
+    $('button#atur_pengguna').click(function() {
+        window.location.replace("<?= base_url('staf/atur_pengguna') ?>");
+    });
+
 });
 </script>

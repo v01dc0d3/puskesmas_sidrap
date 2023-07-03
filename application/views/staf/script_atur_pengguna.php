@@ -111,8 +111,8 @@ $('button#tambah_pengguna').click(function() {
     window.location.replace("<?= base_url('register/tambah_pengguna'); ?>");
 });
 
-$('button#kembali_ke_staf').click(function() {
-    window.location.replace("<?= base_url('staf'); ?>")
+$('button#kembali_ke_admin').click(function() {
+    window.location.replace("<?= base_url('admin'); ?>")
 });
 
 });

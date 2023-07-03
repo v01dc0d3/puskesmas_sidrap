@@ -11,6 +11,7 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "no_kartu" },
+            { "data": "nik" },
             { "data": "nama_kk" },
             { 
                 "data": null,
@@ -27,6 +28,7 @@ $(document).ready(function() {
             "id_rekam_medik": data.id_rekam_medik,
             "no_kartu": data.no_kartu,
             "nama_kk": data.nama_kk,
+            "nik": data.nik,
             "id_pasien": data.id_pasien,
         });
     });
