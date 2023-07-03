@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 03:26 PM
+-- Generation Time: Jul 03, 2023 at 04:32 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -122,7 +122,8 @@ INSERT INTO `page_access` (`id`, `id_role`, `id_page`) VALUES
 (35, 7, 4),
 (36, 2, 11),
 (37, 2, 6),
-(39, 1, 11);
+(39, 1, 11),
+(40, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -142,19 +143,21 @@ CREATE TABLE `pasien` (
   `no_hp` varchar(50) NOT NULL,
   `umur` int(11) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
+  `nik` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pasien`
 --
 
-INSERT INTO `pasien` (`id`, `nama_kk`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `pekerjaan`, `agama`, `no_hp`, `umur`, `email`, `password`) VALUES
-(1, 'Laode Muhamad Fitrah Ramadhan', 'Laode', '28/11/2002', 'Aspol Toddopuli Blok A No.5', 'pria', 'Mahasiswa', 'islam', '081943783411', 21, 'anonyrmoust@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
-(2, 'Muhammad Adnan Surya Azis', 'Adnan', '1970-01-01', 'Jl. Toddopuli 1 Setapak 5 No.34, Kassi-Kassi, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90222', 'pria', 'Wirausaha', 'islam', '082345779012', 30, 'adnan@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
-(3, 'John Smith', 'Johnny', '1990-02-10', '123 Main Street, Anytown, USA', 'pria', 'Software Engineer', 'budha', '+1 (555) 123-4567', 33, 'voidcode@poliupg.ac.id', '25d55ad283aa400af464c76d713c07ad'),
-(4, 'Emma Johnson', 'Em', '1985-03-15', '456 Elm Street, Cityville, USA', '', 'Marketing Manager', 'kristen', '+1 (555) 987-6543', 38, 'emma.johnson@example.com', '25d55ad283aa400af464c76d713c07ad'),
-(5, 'David Thompson', 'Dave', '1992-11-22', '789 Oak Avenue, Townsville, USA', 'pria', 'Accountant', 'kristen', '+1 (555) 234-5678', 30, 'david.thompson@example.com', '25d55ad283aa400af464c76d713c07ad');
+INSERT INTO `pasien` (`id`, `nama_kk`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `pekerjaan`, `agama`, `no_hp`, `umur`, `email`, `password`, `nik`) VALUES
+(1, 'Laode Muhamad Fitrah Ramadhan', 'Laode', '28/11/2002', 'Aspol Toddopuli Blok A No.5', 'pria', 'Mahasiswa', 'islam', '081943783411', 21, 'anonyrmoust@gmail.com', '25d55ad283aa400af464c76d713c07ad', '3321110902070002'),
+(2, 'Muhammad Adnan Surya Azis', 'Adnan', '1970-01-01', 'Jl. Toddopuli 1 Setapak 5 No.34, Kassi-Kassi, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90222', 'pria', 'Wirausaha', 'islam', '082345779012', 30, 'adnan@gmail.com', '25d55ad283aa400af464c76d713c07ad', '3321060902150009'),
+(3, 'John Smith', 'Johnny', '1990-02-10', '123 Main Street, Anytown, USA', 'pria', 'Software Engineer', 'budha', '+1 (555) 123-4567', 33, 'voidcode@poliupg.ac.id', '25d55ad283aa400af464c76d713c07ad', '3305040901072053'),
+(4, 'Emma Johnson', 'Em', '1985-03-15', '456 Elm Street, Cityville, USA', '', 'Marketing Manager', 'kristen', '+1 (555) 987-6543', 38, 'emma.johnson@example.com', '25d55ad283aa400af464c76d713c07ad', '3321062311110003'),
+(5, 'David Thompson', 'Dave', '1992-11-22', '789 Oak Avenue, Townsville, USA', 'pria', 'Accountant', 'kristen', '+1 (555) 234-5678', 30, 'david.thompson@example.com', '25d55ad283aa400af464c76d713c07ad', '3321113011050018'),
+(7, 'Testing nama KK', 'Testing nama panggilan', '2023-07-03', 'Testing alamat', 'pria', 'Testing pekerjaan', 'hindu', '081943783411', 77, 'testingpasien@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1402022805100001');
 
 -- --------------------------------------------------------
 
@@ -321,7 +324,9 @@ INSERT INTO `user` (`id`, `id_role`, `email`, `password`, `full_name`, `no_hp`) 
 (9, 4, 'perawat@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Rungkad', '12345678'),
 (10, 5, 'apoteker@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My Name is Apoteker', '088888888888'),
 (11, 7, 'auditor@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'auditor123', '0821389123291'),
-(14, 2, 'testingemailstaf@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My name is testing staf', '081943783411');
+(14, 2, 'testingemailstaf@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My name is testing staf', '081943783411'),
+(16, 6, 'testingpasien@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My name is testing pasien 123', '081943783411'),
+(17, 6, 'testingpasien@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Testing nama KK', '081943783411');
 
 --
 -- Indexes for dumped tables
@@ -407,13 +412,13 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT for table `page_access`
 --
 ALTER TABLE `page_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `rekam_medik`
@@ -449,7 +454,7 @@ ALTER TABLE `ruang`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
