@@ -8,9 +8,9 @@
 
 <div class="row">
     <div class="col-md-6 my-3">
-        <button type="button" class="btn btn-success" id="tambah_pasien">
+        <!-- <button type="button" class="btn btn-success" id="tambah_pasien">
             Tambah Pasien
-        </button>
+        </button> -->
         <!-- <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
             Atur Pengguna
         </button> -->

@@ -136,5 +136,9 @@ $(document).ready(function() {
         window.location.replace("<?= base_url('staf/atur_pengguna') ?>");
     });
 
+    $('button#tambah_pasien').click(function() {
+        window.location.replace("<?= base_url('register/'); ?>");
+    });
+
 });
 </script>
