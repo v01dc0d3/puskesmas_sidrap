@@ -34,6 +34,7 @@ $(document).ready(function() {
 
         $.redirect("<?= base_url('dokter/detail_rekap_pasien/'); ?>", {
             id: data.id, 
+            nik: data.nik, 
             nama_kk: data.nama_kk, 
             tgl: data.tgl,
             kajian_subjektif: (data.kajian_subjektif == null) ? "Belum ada Kajian Subjektif" : data.kajian_subjektif,

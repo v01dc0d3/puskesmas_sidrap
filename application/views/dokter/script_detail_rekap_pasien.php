@@ -34,6 +34,7 @@ $(document).ready(function() {
     $("button#kembali_ke_rekap_pasien").click(function() {
         $.redirect("<?= base_url('dokter/detail/'); ?>", {
             "id_rekam_medik": "<?= $id_rekam_medik; ?>",
+            "nik": "<?= $nik; ?>",
             "no_kartu": "<?= $no_kartu; ?>",
             "nama_kk": "<?= $nama_kk; ?>",
             "id_pasien": "<?= $id_pasien; ?>",

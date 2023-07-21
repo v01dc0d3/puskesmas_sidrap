@@ -74,6 +74,7 @@ class Dokter extends CI_Controller {
         $data['title'] = "Detail Rekap Medis Pasien";
 
         $data['nama_kk'] = $_POST['nama_kk'];
+        $data['nik'] = $_POST['nik'];
         $data['tgl'] = $_POST['tgl'];
         $data['id_ruang'] = $_POST['id_ruang'];
         $data['kajian_subjektif'] = $_POST['kajian_subjektif'];
