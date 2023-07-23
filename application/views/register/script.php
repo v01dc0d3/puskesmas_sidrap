@@ -81,7 +81,8 @@ $(document).ready(function() {
                                 "agama": $("#agama").val(),
                                 "no_hp": $("#no_hp").val(),
                                 "umur": $("#umur").val(),
-                                "password": $("#password").val(),
+                                // "password": $("#password").val(),
+                                "password": "12345678",
                                 "nik": $("#nik").val(),
                             },
                             "success": function(result) {

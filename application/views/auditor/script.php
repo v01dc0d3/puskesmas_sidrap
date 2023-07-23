@@ -16,7 +16,7 @@ var table = $('#myTable').DataTable({
         { 
             "data": null,
             "render": function ( data, type, row ) {
-                return '<button class="btn text-bg-primary mr-2" id="auditor_dokter">Dokter</button><button class="btn text-bg-info mr-2" id="auditor_perawat">Perawat</button><button class="btn text-bg-success mr-2" id="auditor_staf">Staf</button><button class="btn text-bg-warning mr-2" id="auditor_apoteker">Apoteker</button>';
+                return '<button class="btn text-bg-primary mr-2" id="auditor_dokter">Dokter</button><button class="btn text-bg-info text-light mr-2" id="auditor_perawat">Perawat</button><button class="btn text-bg-success mr-2" id="auditor_staf">Staf</button><button class="btn text-bg-warning text-light mr-2" id="auditor_apoteker">Apoteker</button>';
             }
         },
     ],

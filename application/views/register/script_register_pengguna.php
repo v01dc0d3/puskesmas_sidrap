@@ -66,6 +66,7 @@ $(document).ready(function() {
                             "data": {
                                 "role": $("#role").val(),
                                 "email": $("#email").val(),
+                                // "password": $("#password").val(),
                                 "password": $("#password").val(),
                                 "full_name": $("#nama_kk").val(),
                                 "no_hp": $("#no_hp").val(),

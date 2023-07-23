@@ -24,13 +24,13 @@
                                 <label for="email">Email</label>
                                 <input required type="email" class="form-control form-control-user" id="email" aria-describedby="email_help" placeholder="Masukkan email..">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="password">Password</label>
                                 <div class="input-group mb-3">
                                     <input required id="password" type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="password">
                                     <button class="input-group-text" id="show_password"><i class="fa-solid fa-eye"></i></button>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="nama">Nama Panggilan</label>
                                 <input required type="text" class="form-control form-control-user" id="nama" aria-describedby="nama_help" placeholder="Masukkan nama..">
@@ -56,13 +56,13 @@
                                 <label for="nama_kk">Nama Lengkap Sesuai KK</label>
                                 <input required type="text" class="form-control form-control-user" id="nama_kk" aria-describedby="nama_kk_help" placeholder="Masukkan nama_kk..">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="confirm_password">Konfirmasi Password</label>
                                 <div class="input-group mb-3">
                                     <input required id="confirm_password" type="password" class="form-control" placeholder="confirm_password" aria-label="confirm_password" aria-describedby="confirm_password">
                                     <button class="input-group-text" id="show_confirm_password"><i class="fa-solid fa-eye"></i></button>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="tanggal_lahir">Tanggal Lahir</label>
                                 <input required type="date" class="form-control form-control-user" id="tanggal_lahir" aria-describedby="tanggal_lahir_help" placeholder="Masukkan tanggal_lahir..">
