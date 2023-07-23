@@ -37,6 +37,7 @@ class Staf extends CI_Controller {
         $data['title'] = 'Atur Rekam Medik';
 
         $data['id_pasien'] = $_POST['id_pasien'];
+        $data['nik'] = $_POST['nik'];
         $data['nama_kk'] = $_POST['nama_kk'];
         $data['no_kartu'] = $_POST['no_kartu'];
         $data['no'] = $_POST['no'];

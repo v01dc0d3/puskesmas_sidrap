@@ -18,7 +18,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "tgl" },
             { "data": "nama_kk" },
-            { "data": "kajian" },
+            { "data": "kajian_subjektif" },
             { 
                 "data": null,
                 "render": function ( data, type, row ) {
@@ -35,7 +35,7 @@ $(document).ready(function() {
             id: data.id, 
             nama_kk: data.nama_kk, 
             tgl: data.tgl,
-            kajian: String(data.kajian),
+            kajian_subjektif: String(data.kajian_subjektif),
             anam_pem_fisik: (data.anam_pem_fisik == null) ? "Belum ada Anamnesis (S) & Pemeriksaan Fisik (O)" : data.anam_pem_fisik,
             diagnosis: (data.diagnosis == null) ? "Belum ada Diagnosis (A)" : data.diagnosis,
             terapi: (data.terapi == null) ? "Belum ada Terapi (P)" : data.terapi,

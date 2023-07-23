@@ -57,6 +57,7 @@ $(document).ready(function() {
         $.redirect("<?= base_url('pasien/detail_rekap_pasien/'); ?>", {
             id: data.id, 
             nama_kk: data.nama_kk, 
+            nik: data.nik,
             tgl: data.tgl,
             kajian: String(data.kajian),
             anam_pem_fisik: (data.anam_pem_fisik == null) ? "Belum ada Anamnesis (S) & Pemeriksaan Fisik (O)" : data.anam_pem_fisik,
@@ -228,6 +229,7 @@ $(document).ready(function() {
         $.redirect("<?= base_url('pasien/print_data_rekap_pasien'); ?>", {
             "id_pasien": data.id_pasien,
             "no_kartu": data.no_kartu,
+            "nik": data.nik,
             "nama_kk": data.nama_kk,
             "id_rekam_medik": data.id_rekam_medik,
         }, "POST", "_blank");

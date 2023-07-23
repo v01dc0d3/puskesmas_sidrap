@@ -31,6 +31,7 @@ $(document).ready(function() {
         $.redirect("<?= base_url('dokter/detail/'); ?>", {
             "id_rekam_medik": "<?= $id_rekam_medik; ?>",
             "no_kartu": "<?= $no_kartu; ?>",
+            "nik": "<?= $nik; ?>",
             "nama_kk": "<?= $nama_kk; ?>",
             "id_pasien": "<?= $id_pasien; ?>",
         });

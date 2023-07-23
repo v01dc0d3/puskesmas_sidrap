@@ -34,7 +34,7 @@ $(document).ready(function() {
 
         $.redirect("<?= base_url('dokter/detail_rekap_pasien/'); ?>", {
             id: data.id, 
-            nik: data.nik, 
+            nik: data.nik,
             nama_kk: data.nama_kk, 
             tgl: data.tgl,
             kajian_subjektif: (data.kajian_subjektif == null) ? "Belum ada Kajian Subjektif" : data.kajian_subjektif,
@@ -60,6 +60,7 @@ $(document).ready(function() {
 
         $.redirect("<?= base_url('dokter/edit_rekap_pasien/'); ?>", {
             id: data.id, 
+            nik: data.nik, 
             nama_kk: data.nama_kk, 
             tgl: String(data.tgl),
             kajian_subjektif: (data.kajian_subjektif == null) ? "Belum ada Kajian Subjektif" : data.kajian_subjektif,
@@ -209,6 +210,7 @@ $(document).ready(function() {
     $("button#print_data_rekap_pasien").click(function() {
         $.redirect("<?= base_url('dokter/print_data_rekap_pasien'); ?>", {
             "id_pasien": "<?= $id_pasien; ?>",
+            "nik": "<?= $nik; ?>",
             "no_kartu": "<?= $no_kartu; ?>",
             "nama_kk": "<?= $nama_kk; ?>",
             "id_rekam_medik": "<?= $id_rekam_medik; ?>",

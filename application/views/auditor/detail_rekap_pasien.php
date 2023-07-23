@@ -41,8 +41,8 @@
 <div class="row">
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="kajian">Kajian Paramedis (Data Fokus)</label>
-            <textarea class="form-control" placeholder="Kajian Paramedis (Data Fokus)" id="kajian" style="height: 500px" disabled></textarea>
+            <label for="kajian_subjektif">Kajian Subjektif Paramedis (Data Fokus)</label>
+            <textarea class="form-control" placeholder="Kajian_subjektif Paramedis (Data Fokus)" id="kajian_subjektif" style="height: 500px" disabled></textarea>
         </div>
     </div>
     <div class="col-md-6">

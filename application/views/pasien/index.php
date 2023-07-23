@@ -38,7 +38,7 @@
 </div>
 
 <div class="row mt-3 py-5">
-    <label class="h4" for="tabel_rekap_medis">Rekap Medis</label>
+    <label class="h4" for="tabel_rekap_medis">Rekam Medik</label>
     <div class="col-md-12">
         <table id="tabel_rekam_medik" class="display table">
             <thead>

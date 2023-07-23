@@ -76,7 +76,7 @@ class Auditor extends CI_Controller {
         $data['nama_kk'] = $_POST['nama_kk'];
         $data['tgl'] = $_POST['tgl'];
         $data['id_ruang'] = $_POST['id_ruang'];
-        $data['kajian'] = $_POST['kajian'];
+        $data['kajian_subjektif'] = $_POST['kajian_subjektif'];
         $data['anam_pem_fisik'] = $_POST['anam_pem_fisik'];
         $data['diagnosis'] = $_POST['diagnosis'];
         $data['terapi'] = $_POST['terapi'];

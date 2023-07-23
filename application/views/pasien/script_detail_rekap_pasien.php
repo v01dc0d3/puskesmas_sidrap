@@ -28,6 +28,7 @@ $(document).ready(function() {
         $.redirect("<?= base_url('pasien/'); ?>", {
             id_pasien: String("<?= $id_pasien; ?>"),
             nama_kk: String("<?= $nama_kk; ?>"),
+            nik: String("<?= $nik; ?>"),
         });
     });
 

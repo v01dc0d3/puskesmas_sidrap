@@ -1,8 +1,8 @@
 <script>
 $(document).ready(function() {
-    $('textarea#kajian').summernote({height: 200, toolbar: false});
-    $('textarea#kajian').summernote("disable");
-    $('textarea#kajian').summernote("code", '<?= $kajian; ?>');
+    $('textarea#kajian_subjektif').summernote({height: 200, toolbar: false});
+    $('textarea#kajian_subjektif').summernote("disable");
+    $('textarea#kajian_subjektif').summernote("code", '<?= $kajian_subjektif; ?>');
 
     $('textarea#anam_pem_fisik').summernote({height: 200, toolbar: false});
     $('textarea#anam_pem_fisik').summernote("disable");
