@@ -24,21 +24,23 @@ $(document).ready(function() {
                 showConfirmButton: false,
                 timer: 1000
             });
-        } else if ( $("#password").val() == "" || $("#password").val().length < 8 ) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Isi data password dengan benar!',
-                showConfirmButton: false,
-                timer: 1000
-            });
-        } else if ( $("#confirm_password").val() != $("#password").val() ) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Konfirmasi password salah!',
-                showConfirmButton: false,
-                timer: 1000
-            });
-        } else if ( $("#nama_kk").val() == "" || $("#nama").val() == "" || $("#tanggal_lahir").val() == "" || $("#alamat").val() == "" || $("#jenis_kelamin").val() == "" || $("#pekerjaan").val() == "" || $("#agama").val() == "" || $("#umur").val() == "" ) {
+        } 
+        // else if ( $("#password").val() == "" || $("#password").val().length < 8 ) {
+        //     Swal.fire({
+        //         icon: 'warning',
+        //         title: 'Isi data password dengan benar!',
+        //         showConfirmButton: false,
+        //         timer: 1000
+        //     });
+        // } else if ( $("#confirm_password").val() != $("#password").val() ) {
+        //     Swal.fire({
+        //         icon: 'warning',
+        //         title: 'Konfirmasi password salah!',
+        //         showConfirmButton: false,
+        //         timer: 1000
+        //     });
+        // } 
+        else if ( $("#nama_kk").val() == "" || $("#nama").val() == "" || $("#tanggal_lahir").val() == "" || $("#alamat").val() == "" || $("#jenis_kelamin").val() == "" || $("#pekerjaan").val() == "" || $("#agama").val() == "" || $("#umur").val() == "" ) {
             Swal.fire({
                 icon: 'warning',
                 title: 'Data belum lengkap!',

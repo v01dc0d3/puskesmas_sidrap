@@ -65,6 +65,9 @@
 
 <!-- jquery md5 -->
 <script src="<?= base_url('assets/jquery_md5/jquery.md5.js') ?>"></script>
+
+<!-- datatable sorting date eu -->
+<script src="https://cdn.datatables.net/plug-ins/1.13.5/sorting/date-eu.js"></script>
 </body>
 
 </html>

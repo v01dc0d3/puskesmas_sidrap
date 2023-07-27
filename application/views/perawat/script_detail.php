@@ -3,6 +3,9 @@ $(document).ready(function() {
     var table = $('#myTable').DataTable({
         'autoWidth': true,
         'order': [[0, 'desc']],
+        "columnDefs" : [
+            { type: 'date-eu', targets: 0 }
+        ],
         "ajax": {
             "url": "<?= base_url('perawat/get_all_rekap_medis_by_id_rekam_medik/'); ?>",
             "method": 'POST',
@@ -100,7 +103,7 @@ $(document).ready(function() {
                     let paraf_paramedis = $('select#paraf_paramedis').val();
 
                     let tgl = new Date();
-                    tgl = tgl.getDate() + "/" + tgl.getMonth() + "/" + tgl.getFullYear();
+                    tgl = tgl.getDate() + "/" + (tgl.getMonth() + 1) + "/" + tgl.getFullYear();
 
                     $.ajax({
                         url: '<?= base_url("perawat/edit_data_rekap/") ?>' + data.id,
