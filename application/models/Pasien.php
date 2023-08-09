@@ -16,6 +16,9 @@ class Pasien extends CI_Model {
         $sql = "INSERT INTO pasien VALUES (NULL, '". $_POST['nama_kk'] ."', '". $_POST['nama'] ."', '". $_POST['tanggal_lahir'] ."', '". $_POST['alamat'] ."', '". $_POST['jenis_kelamin'] ."', '". $_POST['pekerjaan'] ."', '". $_POST['agama'] ."', '". $_POST['no_hp'] ."', '". $_POST['umur'] ."', '". $_POST['email'] ."', '". $password ."', '". $_POST['nik'] ."');";
         $this->db->query($sql);
 
+        $sql = "INSERT INTO rekam_medik(id_pasien) SELECT LAST_INSERT_ID();";
+        $this->db->query($sql);
+
         return $this->db->affected_rows();
     }
 
