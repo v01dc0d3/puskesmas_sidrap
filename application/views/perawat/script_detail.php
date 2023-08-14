@@ -98,9 +98,9 @@ $(document).ready(function() {
                     let pasien = $('select#pilih_pasien').val();
                     let ruang = $('select#pilih_ruang').val();
                     let kajian_subjektif = $('textarea#kajian_subjektif').val();
-                    let kajian_objektif = $('textarea#kajian_objektif').val();
+                    let kajian_objektif = ( $('textarea#kajian_objektif').val() == "" ) ? "Belum ada kajian Objektif" : $('textarea#kajian_objektif').val();
                     let asuhan = $('textarea#asuhan').val();
-                    let paraf_paramedis = $('select#paraf_paramedis').val();
+                    let paraf_paramedis = ( $('select#paraf_paramedis').val() == null ) ? '-' : $('select#paraf_paramedis').val();
 
                     let tgl = new Date();
                     tgl = tgl.getDate() + "/" + (tgl.getMonth() + 1) + "/" + tgl.getFullYear();
