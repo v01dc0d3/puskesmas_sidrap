@@ -157,4 +157,27 @@ class Staf extends CI_Controller {
         echo $this->Pasien->delete_pengguna_for_staf($id);
     }
 
+    public function delete_pasien() {
+        $this->load->model("Pasien");
+        echo $this->Pasien->model_delete_pasien();
+    }
+
+    public function edit_pasien() {
+        $this->load->model("Pasien");
+        $data["data_pasien"] = $this->Pasien->get_data_by_id_pasien($_POST['id_pasien'])[0];
+        $data["id_pasien"] = $_POST['id_pasien'];
+
+        $data['title'] = "Edit Pasien";
+
+		$this->load->view('templates/auth/auth_header', $data);
+		$this->load->view('staf/edit_pasien', $data);
+        $this->load->view('staf/script_edit_pasien', $data);
+		$this->load->view('templates/auth/auth_footer');
+    }
+
+    public function edit_data_pasien() {
+        $this->load->model("Pasien");
+        echo $this->Pasien->model_edit_data_pasien($_POST);
+    }
+
 }

@@ -23,34 +23,27 @@
                         <div class="pt-3 pl-5">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input required type="email" class="form-control form-control-user" id="email" aria-describedby="email_help" placeholder="Masukkan email..">
+                                <input required type="email" class="form-control form-control-user" id="email" aria-describedby="email_help" placeholder="Masukkan email.." value="<?= $data_pasien['email']; ?>">
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="password">Password</label>
-                                <div class="input-group mb-3">
-                                    <input required id="password" type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="password">
-                                    <button class="input-group-text" id="show_password"><i class="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div> -->
                             <div class="form-group">
                                 <label for="nama">Nama Panggilan</label>
-                                <input required type="text" class="form-control form-control-user" id="nama" aria-describedby="nama_help" placeholder="Masukkan nama..">
+                                <input required type="text" class="form-control form-control-user" id="nama" aria-describedby="nama_help" placeholder="Masukkan nama.." value="<?= $data_pasien['nama']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input required type="text" class="form-control form-control-user" id="alamat" aria-describedby="alamat_help" placeholder="Masukkan alamat..">
+                                <input required type="text" class="form-control form-control-user" id="alamat" aria-describedby="alamat_help" placeholder="Masukkan alamat.." value="<?= $data_pasien['alamat']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pekerjaan">Pekerjaan</label>
-                                <input required type="text" class="form-control form-control-user" id="pekerjaan" aria-describedby="pekerjaan_help" placeholder="Masukkan pekerjaan..">
+                                <input required type="text" class="form-control form-control-user" id="pekerjaan" aria-describedby="pekerjaan_help" placeholder="Masukkan pekerjaan.." value="<?= $data_pasien['pekerjaan']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="no_hp">No. HP</label>
-                                <input required type="text" class="form-control form-control-user" id="no_hp" aria-describedby="no_hp_help" placeholder="Masukkan No HP..">
+                                <input required type="text" class="form-control form-control-user" id="no_hp" aria-describedby="no_hp_help" placeholder="Masukkan No HP.." value="<?= $data_pasien['no_hp']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="nik">NIK</label>
-                                <input required type="text" class="form-control form-control-user" id="nik" aria-describedby="nik_help" placeholder="Masukkan nik..">
+                                <input required type="text" class="form-control form-control-user" id="nik" aria-describedby="nik_help" placeholder="Masukkan NIK.." value="<?= $data_pasien['nik']; ?>">
                             </div>
                         </div>
                     </div>
@@ -59,11 +52,11 @@
                         <div class="pt-3 pr-5">
                             <div class="form-group">
                                 <label for="nama_kk">Nama Lengkap Sesuai KK</label>
-                                <input required type="text" class="form-control form-control-user" id="nama_kk" aria-describedby="nama_kk_help" placeholder="Masukkan nama_kk..">
+                                <input required type="text" class="form-control form-control-user" id="nama_kk" aria-describedby="nama_kk_help" placeholder="Masukkan nama_kk.." value="<?= $data_pasien['nama_kk']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input required type="date" class="form-control form-control-user" id="tanggal_lahir" aria-describedby="tanggal_lahir_help" placeholder="Masukkan tanggal_lahir..">
+                                <input required type="date" class="form-control form-control-user" id="tanggal_lahir" aria-describedby="tanggal_lahir_help" placeholder="Masukkan tanggal_lahir.." value="<?= $data_pasien['tanggal_lahir']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -87,11 +80,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="umur">Umur</label>
-                                <input required type="number" class="form-control form-control-user" id="umur" aria-describedby="umur_help" placeholder="Masukkan umur..">
+                                <input required type="number" class="form-control form-control-user" id="umur" aria-describedby="umur_help" placeholder="Masukkan umur.." value="<?= $data_pasien['umur']; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="no_kartu">No Kartu Rekam Medik</label>
-                                <input required type="text" class="form-control form-control-user" id="no_kartu" aria-describedby="no_kartu_help" placeholder="Masukkan No Kartu Rekam Medik..">
+                                <input required type="text" class="form-control form-control-user" id="no_kartu" aria-describedby="no_kartu_help" placeholder="Masukkan No Kartu Rekam Medik.." value="<?= $data_pasien['no_kartu']; ?>">
                             </div>
                         </div>
                     </div>
@@ -100,7 +93,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="pt-2 px-5 text-center">
-                            <button class="form-control btn btn-primary" id="daftar">Daftar</button>
+                            <button class="form-control btn btn-primary" id="edit">Edit</button>
                         </div>
                     </div>
                 </div>

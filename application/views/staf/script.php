@@ -16,7 +16,7 @@ var table = $('#myTable').DataTable({
         { 
             "data": null,
             "render": function ( data, type, row ) {
-                return '<button class="btn text-bg-primary mr-2" id="data_rekam_atur">Atur</button><button class="btn text-bg-success mr-2" id="cetak_no_rekam_medik">Cetak Nomor Rekam Medik</button>';
+                return '<button class="btn text-bg-primary mr-2" id="data_rekam_atur">Atur</button><button class="btn text-bg-warning mr-2 text-white" id="edit_pasien">Edit</button><button class="btn text-bg-danger" id="hapus_pasien">Hapus</button>';
             }
         },
     ],
@@ -33,13 +33,55 @@ $('#myTable').on('click', 'button#data_rekam_atur', function() {
 
 });
 
-$('#myTable').on('click', 'button#cetak_no_rekam_medik', function() {
+
+$('#myTable').on('click', 'button#hapus_pasien', function() {
     var data = table.row($(this).parents('tr')).data();
 
     Swal.fire({
-        icon: 'info',
-        title: 'Nomor rekam medik: ' + data.no_kartu,
+        title: 'Anda Yakin?',
+        text: "Data pasien akan dihapus!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya!'
+    }).then((result) => {
+        $.ajax({
+            url: "<?= base_url('staf/delete_pasien'); ?>",
+            method: "POST",
+            data: {
+                id_pasien: data.id_pasien,
+                id_rekam_medik: data.id_rekam_medik,
+                id_user: data.user_id,
+            },
+            success: function(result) {
+                Swal.fire(
+                    'Deleted!',
+                    'Data pasien telah terhapus!',
+                    'success'
+                );
+                $('#myTable').DataTable().ajax.reload();
+            }
+        });
     });
+
+});
+
+$('#myTable').on('click', 'button#edit_pasien', function() {
+    var data = table.row($(this).parents('tr')).data();
+
+    $.redirect("<?= base_url('staf/edit_pasien'); ?>", {
+        id_pasien: data.id_pasien,
+    });
+
+});
+
+$('#myTable').on('click', 'button#hapus_pasien', function() {
+    var data = table.row($(this).parents('tr')).data();
+});
+
+$('#myTable').on('click', 'button#cetak_no_rekam_medik', function() {
+    var data = table.row($(this).parents('tr')).data();
 });
 
 $('button#tambah_pasien').click(function() {

@@ -16,7 +16,7 @@ class Pasien extends CI_Model {
         $sql = "INSERT INTO pasien VALUES (NULL, '". $_POST['nama_kk'] ."', '". $_POST['nama'] ."', '". $_POST['tanggal_lahir'] ."', '". $_POST['alamat'] ."', '". $_POST['jenis_kelamin'] ."', '". $_POST['pekerjaan'] ."', '". $_POST['agama'] ."', '". $_POST['no_hp'] ."', '". $_POST['umur'] ."', '". $_POST['email'] ."', '". $password ."', '". $_POST['nik'] ."');";
         $this->db->query($sql);
 
-        $sql = "INSERT INTO rekam_medik(id_pasien) SELECT LAST_INSERT_ID();";
+        $sql = "INSERT INTO rekam_medik(id_pasien, no_kartu) VALUES (LAST_INSERT_ID(), '". $_POST['no_kartu'] ."');";
         $this->db->query($sql);
 
         return $this->db->affected_rows();
@@ -81,6 +81,34 @@ class Pasien extends CI_Model {
 
     public function delete_pengguna_for_staf($id) {
         $sql = "DELETE FROM user WHERE id='". $id ."';";
+        $this->db->query($sql);
+
+        return $this->db->affected_rows();
+    }
+
+    public function model_delete_pasien() {
+        $sql = "DELETE FROM user WHERE id='". $_POST['id_user'] ."';";
+        $this->db->query($sql);
+
+        $sql = "DELETE FROM pasien WHERE id='". $_POST['id_pasien'] ."';";
+        $this->db->query($sql);
+
+        $sql = "DELETE FROM rekam_medik WHERE id='". $_POST['id_rekam_medik'] ."';";
+        $this->db->query($sql);
+
+        $sql = "DELETE FROM rekap_medis WHERE id_rekam_medik='". $_POST['id_rekam_medik'] ."';";
+        $this->db->query($sql);
+
+        return $this->db->affected_rows();
+    }
+
+    public function get_data_by_id_pasien($id_pasien) {
+        $sql = "SELECT p.*, rmk.no_kartu FROM pasien AS p INNER JOIN rekam_medik AS rmk ON p.id=rmk.id_pasien WHERE p.id='". $id_pasien ."';";
+        return $this->db->query($sql)->result_array(); 
+    }
+
+    public function model_edit_data_pasien($data_pasien) {
+        $sql = "UPDATE pasien SET nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."' WHERE id='". $data_pasien['id_pasien'] ."';";
         $this->db->query($sql);
 
         return $this->db->affected_rows();
