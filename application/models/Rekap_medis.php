@@ -70,4 +70,9 @@ class Rekap_medis extends CI_Model {
         $sql = "SELECT ro.* FROM resep_obat AS ro INNER JOIN rekap_medis AS rms ON ro.id_rekap_medis = rms.id WHERE ro.id_rekap_medis='". $_POST['id_rms'] ."';";
         return $this->db->query($sql)->result_array();
     }
+
+    public function model_read_diagnosis() {
+        $sql = "SELECT tgl, diagnosis FROM rekap_medis ORDER BY diagnosis ASC;";
+        return $this->db->query($sql)->result_array();
+    }
 }

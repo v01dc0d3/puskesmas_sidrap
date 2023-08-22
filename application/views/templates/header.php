@@ -30,6 +30,9 @@
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/9bbc0e9a6e.js" crossorigin="anonymous"></script>
 
+    <!-- chart js -->
+    <script src="<?= base_url(); ?>/assets/chart_js/chart.min.js"></script>
+
 </head>
 
 <body id="page-top">

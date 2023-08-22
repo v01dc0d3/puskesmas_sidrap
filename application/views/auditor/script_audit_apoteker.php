@@ -17,7 +17,7 @@ var table = $('#myTable').DataTable({
         { 
             "data": null,
             "render": function ( data, type, row ) {
-                return '<button class="btn text-bg-primary mr-2" id="edit_resep_obat">Edit</button>';
+                return '<button class="btn text-bg-primary mr-2" id="edit_resep_obat">Detail</button>';
             }
         },
     ],

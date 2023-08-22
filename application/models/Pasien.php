@@ -19,6 +19,9 @@ class Pasien extends CI_Model {
         $sql = "INSERT INTO rekam_medik(id_pasien, no_kartu) VALUES (LAST_INSERT_ID(), '". $_POST['no_kartu'] ."');";
         $this->db->query($sql);
 
+        $sql = "INSERT INTO rekap_medis(id, id_rekam_medik, tgl) VALUES (NULL, LAST_INSERT_ID(), date_format(curdate(), '%d/%m/%Y'));";
+        $this->db->query($sql);
+
         return $this->db->affected_rows();
     }
 
