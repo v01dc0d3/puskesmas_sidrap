@@ -28,14 +28,12 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-var data_penyakit = [];
-var data_jumlah_penyakit = [];
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: data_penyakit,
+    labels: [],
     datasets: [{
       label: "Kasus",
       lineTension: 0.3,
@@ -49,7 +47,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: data_jumlah_penyakit,
+      data: [],
     }],
   },
   options: {
@@ -120,50 +118,137 @@ var myLineChart = new Chart(ctx, {
 });
 
 function getDiagnosis() {
-    $.ajax({
-        url: "<?= base_url('laporan/read_diagnosis'); ?>",
-        success: function(result) {
-            var data = JSON.parse(result);
-            var data_penyakit_raw = []
+  var data_penyakit = [];
+  var data_penyakit_raw = [];
+  var data_jumlah_penyakit = [];
+  $.ajax({
+      url: "<?= base_url('laporan/read_diagnosis'); ?>",
+      success: function(result) {
+        var data = JSON.parse(result);
 
-            const d = new Date();
-            let cur_month = d.getMonth() + 1;
+        if (data.length > 0) {
+          const d = new Date();
+          let cur_month = d.getMonth() + 1;
 
-            for( var i = 0; i < data.length; i++ ) {
-                var data_month = data[i].tgl.split("/")[1];
-                if (data_month == cur_month) {
-                    var data_diagnosis = data[i].diagnosis;
-                    data_penyakit_raw.push(data_diagnosis);
+          // sesuaikan dengan bulan
+          for( var i = 0; i < data.length; i++ ) {
+              var data_month = data[i].tgl.split("/")[1];
+              if (data_month == cur_month) {
+                  var data_diagnosis = data[i].diagnosis;
+                  data_penyakit_raw.push(data_diagnosis);
+              }
+          }
+
+          // kategorikan nama penyaki dari [diare,diare,kejang demam] menjadi [diare,kejang demam]
+          myLineChart.data.labels = [];
+          $.each(data_penyakit_raw, function(i, el){
+            if($.inArray(el, data_penyakit) === -1) {
+                if (data_penyakit.length < 10) {
+                  data_penyakit.push(el);
+                  myLineChart.data.labels.push(el);
                 }
             }
+          });
 
+          myLineChart.data.datasets[0].data = [];
+          var jumlah = 1;
+          var cur_data = data_penyakit_raw[0];
+          for (var i = 1; i < data_penyakit_raw.length; i++) {
+            if (cur_data != data_penyakit_raw[i]) {
+              myLineChart.data.datasets[0].data.push(jumlah);
+              jumlah = 1;
+            } else {
+              jumlah++;
+            }
+
+            if (data_penyakit_raw[i+1] == undefined) {
+              myLineChart.data.datasets[0].data.push(jumlah);
+              jumlah = 1;
+            }
+            cur_data = data_penyakit_raw[i];
+          }
+        } else {
+          myLineChart.data.labels = ["Tidak ada Kasus", "Tidak ada Kasus"];
+            myLineChart.data.datasets[0].data = [0, 0];
+        }
+
+      },
+  }).done(function() {
+    myLineChart.update();
+  });
+}
+getDiagnosis();
+
+$("a.dropdown-toggle").click(function(e) {
+
+  e.preventDefault();
+  $("ul.dropdown-menu").empty();
+  var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  $.each(monthNames, function(idx, val) {
+    $("ul.dropdown-menu").append('<li><a class="dropdown-item" id="'+ (idx+1) +'">'+ val +'</a></li>');
+  });
+
+  $("ul.dropdown-menu li a").click(function(e) {
+    var data_penyakit = [];
+    var data_penyakit_raw = [];
+    var data_jumlah_penyakit = [];
+
+    $.ajax({
+        url: "<?= base_url('laporan/read_diagnosis_by_month'); ?>",
+        data: {
+          month_filter: $(e.currentTarget).attr("id"),
+        },
+        method: "POST",
+        success: function(result) {
+          var data = JSON.parse(result);
+
+          if ( data.length > 0 ) {
+            console.log(data);
+            // sorting data penyakit
+            for( var i = 0; i < data.length; i++ ) {
+              data_penyakit_raw.push(data[i].diagnosis);
+            }
+
+            myLineChart.data.labels = [];
             $.each(data_penyakit_raw, function(i, el){
-                if($.inArray(el, data_penyakit) === -1) {
-                    if (data_penyakit.length < 10) {
-                        data_penyakit.push(el);
-                    }
-                }
+              if($.inArray(el, data_penyakit) === -1) {
+                  if (data_penyakit.length < 10) {
+                    data_penyakit.push(el);
+                    myLineChart.data.labels.push(el);
+                  }
+              }
             });
             
             // arraynya data_jumlah_penyakit
+            myLineChart.data.datasets[0].data = [];
             var jumlah = 1;
-            console.log(data_penyakit_raw);
-            for (var i = 0; i < data_penyakit_raw.length; i++) {
-                if (data_penyakit_raw[i] != data_penyakit_raw[i+1] || data_penyakit_raw[i+1] == null) {
-                    data_jumlah_penyakit.push(jumlah);
-                    jumlah = 1;
-                } else {
-                    jumlah++;
-                }
-            }
+            var cur_data = data_penyakit_raw[0];
+            for (var i = 1; i < data_penyakit_raw.length; i++) {
+              if (cur_data != data_penyakit_raw[i]) {
+                myLineChart.data.datasets[0].data.push(jumlah);
+                jumlah = 1;
+              } else {
+                jumlah++;
+              }
+
+              if (data_penyakit_raw[i+1] == undefined) {
+                myLineChart.data.datasets[0].data.push(jumlah);
+                jumlah = 1;
+              }
+              cur_data = data_penyakit_raw[i];
+            } 
+          } else {
+            myLineChart.data.labels = ["Tidak ada Kasus", "Tidak ada Kasus"];
+            myLineChart.data.datasets[0].data = [0, 0];
+          }
 
         },
 
     }).done(function() {
-        myLineChart.update();
+      myLineChart.update();
     });
-}
-getDiagnosis();
+  });
+});
 
 
 </script>

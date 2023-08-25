@@ -33,4 +33,10 @@ class Laporan extends CI_Controller {
         echo json_encode($this->Rekap_medis->model_read_diagnosis());
     }
 
+    public function read_diagnosis_by_month() {
+        $month_filter = $_POST["month_filter"];
+        $this->load->model("Rekap_medis");
+        echo json_encode($this->Rekap_medis->model_read_diagnosis_by_month($month_filter));
+    }
+
 }
