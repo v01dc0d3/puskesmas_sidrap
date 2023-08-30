@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2023 at 11:08 AM
+-- Generation Time: Aug 30, 2023 at 01:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -68,7 +68,8 @@ INSERT INTO `page` (`id`, `pagename`) VALUES
 (8, 'login'),
 (9, 'logout'),
 (10, 'beranda'),
-(11, 'register');
+(11, 'register'),
+(12, 'laporan');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,10 @@ INSERT INTO `page_access` (`id`, `id_role`, `id_page`) VALUES
 (36, 2, 11),
 (37, 2, 6),
 (39, 1, 11),
-(40, 1, 2);
+(40, 1, 2),
+(41, 1, 12),
+(42, 2, 12),
+(43, 7, 12);
 
 -- --------------------------------------------------------
 
@@ -133,6 +137,7 @@ INSERT INTO `page_access` (`id`, `id_role`, `id_page`) VALUES
 
 CREATE TABLE `pasien` (
   `id` int(11) NOT NULL,
+  `nik` varchar(255) NOT NULL,
   `nama_kk` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `tanggal_lahir` varchar(255) NOT NULL,
@@ -143,20 +148,18 @@ CREATE TABLE `pasien` (
   `no_hp` varchar(50) NOT NULL,
   `umur` int(11) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `nik` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pasien`
 --
 
-INSERT INTO `pasien` (`id`, `nama_kk`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `pekerjaan`, `agama`, `no_hp`, `umur`, `email`, `password`, `nik`) VALUES
-(1, 'Laode Muhamad Fitrah Ramadhan', 'Laode', '28/11/2002', 'Aspol Toddopuli Blok A No.5', 'pria', 'Mahasiswa', 'islam', '081943783411', 21, 'anonyrmoust@gmail.com', '25d55ad283aa400af464c76d713c07ad', '3321110902070002'),
-(2, 'Muhammad Adnan Surya Azis', 'Adnan', '1970-01-01', 'Jl. Toddopuli 1 Setapak 5 No.34, Kassi-Kassi, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90222', 'pria', 'Wirausaha', 'islam', '082345779012', 30, 'adnan@gmail.com', '25d55ad283aa400af464c76d713c07ad', '3321060902150009'),
-(3, 'John Smith', 'Johnny', '1990-02-10', '123 Main Street, Anytown, USA', 'pria', 'Software Engineer', 'budha', '+1 (555) 123-4567', 33, 'voidcode@poliupg.ac.id', '25d55ad283aa400af464c76d713c07ad', '3305040901072053'),
-(4, 'Emma Johnson', 'Em', '1985-03-15', '456 Elm Street, Cityville, USA', '', 'Marketing Manager', 'kristen', '+1 (555) 987-6543', 38, 'emma.johnson@example.com', '25d55ad283aa400af464c76d713c07ad', '3321062311110003'),
-(5, 'David Thompson', 'Dave', '1992-11-22', '789 Oak Avenue, Townsville, USA', 'pria', 'Accountant', 'kristen', '+1 (555) 234-5678', 30, 'david.thompson@example.com', '25d55ad283aa400af464c76d713c07ad', '3321113011050018');
+INSERT INTO `pasien` (`id`, `nik`, `nama_kk`, `nama`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `pekerjaan`, `agama`, `no_hp`, `umur`, `email`, `password`) VALUES
+(1, '3321110902070002', 'Laode Muhamad Fitrah Ramadhan', 'Laode', '28/11/2002', 'Aspol Toddopuli Blok A No.5', 'pria', 'Mahasiswa', 'islam', '081943783411', 21, 'anonyrmoust@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
+(2, '3321060902150009', 'Muhammad Adnan Surya Azis', 'Adnan', '1970-01-01', 'Jl. Toddopuli 1 Setapak 5 No.34, Kassi-Kassi, Kec. Rappocini, Kota Makassar, Sulawesi Selatan 90222', 'pria', 'Wirausaha', 'islam', '082345779012', 30, 'adnan@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
+(22, '6408042011020007', 'Testing nama lengkap', 'Testing Pasien', '2023-12-30', 'Politeknik Negeri Ujung Pandang', 'pria', 'Testing pekerjaan', 'islam', '088888888888', 11, 'testingpasien@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
+(23, '6408042011020008', 'aldkasldkaslkdl', 'ijqoiduqwiodiqo', '1111-11-11', 'ioqiopeiqwopeip', 'wanita', 'iewqpeiopqwie', 'kristen', '088888888888', 111, 'adjaskdaskjddksj@gmail.com', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
 
@@ -184,7 +187,9 @@ INSERT INTO `rekam_medik` (`id`, `id_pasien`, `no_kartu`, `no`, `tgl`, `anamnesa
 (3, 1, 223344, 2, '21/05/2023', 'Contoh Anamnesa 3', 'Terapi 1'),
 (4, 2, 112233, 2, '12/03/2011', 'Contoh Anamnesa 4', 'Terapi 2'),
 (6, 2, 112233, 3, '17/5/2023', '<p>Oke123</p>', '<p>Baik</p>'),
-(7, 1, 223344, 3, '18/5/2023', '<p>Anamnesa 1 Ok</p>', '<p>Therap Terserah</p>');
+(7, 1, 223344, 3, '18/5/2023', '<p>Anamnesa 1 Ok</p>', '<p>Therap Terserah</p>'),
+(18, 22, 123, 0, '', '', ''),
+(19, 23, 123, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -196,7 +201,7 @@ CREATE TABLE `rekap_medis` (
   `id` int(11) NOT NULL,
   `id_rekam_medik` int(11) NOT NULL,
   `tgl` varchar(255) NOT NULL,
-  `id_ruang` int(11) NOT NULL,
+  `id_ruang` int(11) DEFAULT NULL,
   `anam_pem_fisik` longtext DEFAULT NULL,
   `diagnosis` longtext DEFAULT NULL,
   `terapi` longtext DEFAULT NULL,
@@ -214,17 +219,19 @@ CREATE TABLE `rekap_medis` (
 --
 
 INSERT INTO `rekap_medis` (`id`, `id_rekam_medik`, `tgl`, `id_ruang`, `anam_pem_fisik`, `diagnosis`, `terapi`, `asuhan`, `icd`, `id_petugas`, `kajian_subjektif`, `kajian_objektif`, `paraf_paramedis`, `paraf_medis`) VALUES
-(7, 3, '20/4/2023', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'asdadas21321321321', NULL, NULL, NULL),
-(8, 3, '20/4/2023', 1, 'Anamnesis 1 Contoh', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', 'Belum ada Asuhan Keperawatan / Kebidanan', 'Belum ada ICD X', 0, 'Sakit', NULL, NULL, NULL),
-(9, 4, '16/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>sdasdas</p>', NULL, NULL, NULL),
-(10, 4, '16/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dasdasda</p>', NULL, NULL, NULL),
-(15, 6, '17/4/2023', 2, 'Hello My Friend 123', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', NULL, 'Belum ada ICD X', 0, '<p>ASDasdadasdsadas</p>', NULL, NULL, 'terima'),
-(16, 3, '27/7/2023', 2, NULL, NULL, NULL, '', NULL, NULL, '<p>12327072023</p>', '', '', NULL),
-(18, 7, '18/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>Okeokeokekeoke</p>', NULL, NULL, NULL),
-(19, 7, '20/4/2023', 2, NULL, NULL, NULL, NULL, NULL, NULL, '<p>adsasdas1234</p>', NULL, NULL, NULL),
-(20, 7, '30/5/2023', 1, NULL, NULL, NULL, NULL, NULL, NULL, '<p>dasdasdsa</p>', '<p>dasdasda</p>', NULL, NULL),
-(21, 7, '30/5/2023', 2, NULL, NULL, NULL, '<p>dadasdadasd</p>', NULL, NULL, '<p>dasdas</p>', '<p>dsadasd</p>', NULL, NULL),
-(22, 7, '30/5/2023', 1, 'Belum ada Anamnesis (S) &amp; Pemeriksaan Fisik (O)', 'Belum ada Diagnosis (A)', 'Belum ada Terapi (P)', '<p>dsadasdas</p>', 'Belum ada ICD X', 0, '<p>dsadadas</p>', '<p>dsadasd</p>', 'tolak', 'terima');
+(7, 3, '20/4/2023', 1, NULL, 'Diare', NULL, NULL, NULL, NULL, 'asdadas21321321321', NULL, NULL, NULL),
+(8, 3, '20/4/2023', 1, 'Anamnesis 1 Contoh', 'Hipertensi', 'Belum ada Terapi (P)', 'Belum ada Asuhan Keperawatan / Kebidanan', 'Belum ada ICD X', 0, 'Sakit', NULL, NULL, NULL),
+(9, 4, '16/4/2023', 2, NULL, 'Vomiting', NULL, NULL, NULL, NULL, '<p>sdasdas</p>', NULL, NULL, NULL),
+(10, 4, '16/4/2023', 2, NULL, 'Vertigo', NULL, NULL, NULL, NULL, '<p>dasdasda</p>', NULL, NULL, NULL),
+(15, 6, '17/4/2023', 2, 'Hello My Friend 1231321312', 'Kejang Demam', 'Belum ada Terapi (P)', NULL, 'Belum ada ICD X', 0, '<p>ASDasdadasdsadas</p>', NULL, NULL, 'terima'),
+(16, 3, '14/8/2023', 2, NULL, 'Diare', NULL, 'Disuruh Pulang Part 122131231', NULL, NULL, '<p>12327072023</p>', 'Belum ada kajian Objektif', 'terima', NULL),
+(18, 7, '18/4/2023', 2, NULL, 'Hipertensi', NULL, NULL, NULL, NULL, '<p>Okeokeokekeoke</p>', NULL, NULL, NULL),
+(19, 7, '20/4/2023', 2, NULL, 'Vomiting', NULL, NULL, NULL, NULL, '<p>adsasdas1234</p>', NULL, NULL, NULL),
+(20, 7, '30/5/2023', 1, NULL, 'Kejang Demam', NULL, NULL, NULL, NULL, '<p>dasdasdsa</p>', '<p>dasdasda</p>', NULL, NULL),
+(21, 7, '14/8/2023', 2, NULL, 'Diare', NULL, '<p>HELOOOOO</p>', NULL, NULL, '<p>dasdas</p>', '<p>dsadasd</p>', '-', NULL),
+(22, 7, '30/5/2023', 1, 'Belum ada Anamnesis (S) &amp; Pemeriksaan Fisik (O)', 'Febris', 'Belum ada Terapi (P)', '<p>dsadasdas</p>', 'Belum ada ICD X', 0, '<p>dsadadas</p>', NULL, 'tolak', 'terima'),
+(32, 18, '22/08/2023', NULL, NULL, 'Kolik Abdomen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 19, '22/08/2023', NULL, NULL, 'Kejang Demam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -248,7 +255,7 @@ INSERT INTO `resep_obat` (`id`, `id_rekap_medis`, `resep`, `status`, `tgl`) VALU
 (1, 10, '<p>Obat 1234</p>', 'selesai', '17/5/2023'),
 (2, 9, '<p>Obat Paracetamol</p>', 'selesai', '17/5/2023'),
 (3, 7, '<p>Hello 123</p><p><br></p>', 'request', '17/5/2023'),
-(4, 15, '<p>Obat Paracetamol</p><p><br></p>', 'selesai', '21/7/2023');
+(4, 15, '<p>Obat Paracetamol123</p><p><br></p>', 'request', '9/8/2023');
 
 -- --------------------------------------------------------
 
@@ -313,8 +320,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `id_role`, `email`, `password`, `full_name`, `no_hp`) VALUES
-(1, 6, 'david.thompson@example.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
-(2, 6, 'emma.johnson@example.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
 (3, 6, 'voidcode@poliupg.ac.id', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
 (4, 6, 'adnan@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Muhammad Adnan Surya Azis', '082345779012'),
 (5, 6, 'anonyrmoust@gmail.com', '25d55ad283aa400af464c76d713c07ad', NULL, NULL),
@@ -323,7 +328,9 @@ INSERT INTO `user` (`id`, `id_role`, `email`, `password`, `full_name`, `no_hp`) 
 (8, 3, 'dokter@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Dr. Paijo', '081919191919'),
 (9, 4, 'perawat@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Rungkad', '12345678'),
 (10, 5, 'apoteker@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'My Name is Apoteker', '088888888888'),
-(11, 7, 'auditor@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'auditor123', '0821389123291');
+(11, 7, 'auditor@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'auditor123', '0821389123291'),
+(35, 6, 'testingpasien@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Laode Muhamad Fitrah Ramadhan', '088888888888'),
+(36, 6, 'adjaskdaskjddksj@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'aldkasldkaslkdl', '088888888888');
 
 --
 -- Indexes for dumped tables
@@ -351,7 +358,8 @@ ALTER TABLE `page_access`
 -- Indexes for table `pasien`
 --
 ALTER TABLE `pasien`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nik_primary_key` (`nik`);
 
 --
 -- Indexes for table `rekam_medik`
@@ -403,31 +411,31 @@ ALTER TABLE `antrian`
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `page_access`
 --
 ALTER TABLE `page_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `rekam_medik`
 --
 ALTER TABLE `rekam_medik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `rekap_medis`
 --
 ALTER TABLE `rekap_medis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `resep_obat`
@@ -451,7 +459,7 @@ ALTER TABLE `ruang`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
