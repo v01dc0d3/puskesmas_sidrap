@@ -16,12 +16,9 @@
         <button type="button" class="btn btn-success" id="tambah_akses_halaman">
             Tambah Halaman Baru
         </button>
-        <!-- <button type="button" class="btn btn-success" id="tambah_pasien">
-            Tambah Pasien
-        </button> -->
-        <button type="button" class="btn btn-primary" id="atur_staf">
+        <!-- <button type="button" class="btn btn-primary" id="atur_staf">
             Atur Staf
-        </button>
+        </button> -->
         <button type="button" class="btn btn-warning text-white" id="atur_pengguna">
             Atur Pengguna
         </button>

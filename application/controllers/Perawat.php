@@ -18,6 +18,7 @@ class Perawat extends CI_Controller {
 	public function index()
 	{
         $data['title'] = "Perawat";
+        $data['page_title'] = "Daftar Pasien";
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

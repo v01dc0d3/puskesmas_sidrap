@@ -49,7 +49,7 @@ class Pasien extends CI_Model {
     }
 
     public function get_all_roles_for_staf() {
-        $sql = "SELECT * FROM role WHERE rolename!='admin' AND rolename!='pasien' AND rolename!='staf';";
+        $sql = "SELECT * FROM role WHERE rolename!='admin' AND rolename!='pasien';";
         return $this->db->query($sql)->result_array();
     }
 
@@ -59,7 +59,7 @@ class Pasien extends CI_Model {
     }
 
     public function get_all_role_full_name_for_staf() {
-        $sql = "SELECT u.*, r.rolename FROM user AS u INNER JOIN role AS r ON u.id_role=r.id WHERE r.rolename NOT IN ('admin', 'staf', 'pasien');";
+        $sql = "SELECT u.*, r.rolename FROM user AS u INNER JOIN role AS r ON u.id_role=r.id WHERE r.rolename NOT IN ('admin', 'pasien');";
         return $this->db->query($sql)->result_array();
     }
 

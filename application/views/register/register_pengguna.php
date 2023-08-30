@@ -69,7 +69,7 @@
                         <div class="pt-2 px-5 text-center">
                             <button class="form-control btn btn-primary" id="daftar">Daftar</button>
                         </div>
-                    </div>
+                    </div> 
                 </div>
 
                 <div class="row">
