@@ -35,6 +35,7 @@ class Laporan extends CI_Controller {
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
         $this->load->view('templates/script_js/script_topbar');
+		$this->load->view('laporan/styling_laporan_print');
 		$this->load->view('laporan/index');
 		$this->load->view('laporan/script');
         $this->load->view('templates/footer');

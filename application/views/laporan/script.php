@@ -132,7 +132,6 @@ function getDiagnosis() {
 
           // sesuaikan dengan bulan
           for( var i = 0; i < data.length; i++ ) {
-            console.log();
             if (data[i].diagnosis != null) {
               var data_month = data[i].tgl.split("/")[1];
               if (data_month == cur_month) {
@@ -141,7 +140,6 @@ function getDiagnosis() {
               }
             }
           }
-          console.log(data_penyakit_raw);
 
           // kategorikan nama penyaki dari [diare,diare,kejang demam] menjadi [diare,kejang demam]
           myLineChart.data.labels = [];
@@ -214,7 +212,9 @@ $("a.dropdown-toggle").click(function(e) {
             console.log(data);
             // sorting data penyakit
             for( var i = 0; i < data.length; i++ ) {
-              data_penyakit_raw.push(data[i].diagnosis);
+              if (data[i].diagnosis != null) {
+                data_penyakit_raw.push(data[i].diagnosis);
+              }
             }
 
             myLineChart.data.labels = [];
