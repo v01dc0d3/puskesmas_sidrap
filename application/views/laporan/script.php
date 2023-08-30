@@ -187,7 +187,7 @@ $("a.dropdown-toggle").click(function(e) {
 
   e.preventDefault();
   $("ul.dropdown-menu").empty();
-  var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  var monthNames = [ "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" ];
   $.each(monthNames, function(idx, val) {
     $("ul.dropdown-menu").append('<li><a class="dropdown-item" id="'+ (idx+1) +'">'+ val +'</a></li>');
   });
@@ -258,9 +258,9 @@ $("a.dropdown-toggle").click(function(e) {
   });
 });
 
-// $("button#print_laporan").click(function() {
-//   $("div.chart-area").;
-// });
+$("button#print_laporan").click(function() {
+  window.print();
+});
 
 
 </script>

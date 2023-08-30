@@ -19,8 +19,15 @@ class Laporan extends CI_Controller {
 	{
         $now = new \DateTime('now');
         $monthNum  = $now->format('m');
-        $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-        $monthName = $dateObj->format('F');
+        $monthNames = [ "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" ];
+        $monthName = "";
+        // var_dump(8 == intval($monthNum));
+
+        for ($i = 0; $i < count($monthNames); $i++) {
+            if ($i == intval($monthNum)) {
+                $monthName = $monthNames[$i-1];
+            }
+        }
 
         $data['title'] = "Laporan " . $monthName;
 
