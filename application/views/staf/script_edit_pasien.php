@@ -51,9 +51,10 @@ $(document).ready(function() {
                     "no_kartu": $("#no_kartu").val(),
                     "password": "12345678",
                     "nik": $("#nik").val(),
+                    "id_user": "<?= $id_user; ?>",
                 },
                 "success": function(result) {
-                    if (result == 1) {
+                    if (result != 0) {
                         Swal.fire({
                             icon: 'success',
                             title: 'Data Pasien Berhasil Diubah',
@@ -64,6 +65,15 @@ $(document).ready(function() {
                         });
 
                         
+                    } else if (result == 0) {
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Data Pasien Gagal Tidak Berubah',
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then((result) => {
+                            window.location.replace("<?= base_url('staf'); ?>");
+                        });
                     } else {
                         Swal.fire({
                             icon: 'error',

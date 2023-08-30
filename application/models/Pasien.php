@@ -111,9 +111,25 @@ class Pasien extends CI_Model {
     }
 
     public function model_edit_data_pasien($data_pasien) {
-        $sql = "UPDATE pasien SET nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama_kk='". $data_pasien["nama_kk"] ."' WHERE id='". $data_pasien['id_pasien'] ."';";
+        $success_query = 0;
+        $sql = "UPDATE pasien SET nik='". $data_pasien["nik"] ."', nama_kk='". $data_pasien["nama_kk"] ."', nama='". $data_pasien["nama"] ."', tanggal_lahir='". $data_pasien["tanggal_lahir"] ."', alamat='". $data_pasien["alamat"] ."', jenis_kelamin='". $data_pasien["jenis_kelamin"] ."', pekerjaan='". $data_pasien["pekerjaan"] ."', agama='". $data_pasien["agama"] ."', no_hp='". $data_pasien["no_hp"] ."', umur='". $data_pasien["umur"] ."', email='". $data_pasien["email"] ."' WHERE id='". $data_pasien['id_pasien'] ."';";
         $this->db->query($sql);
+        if ($this->db->affected_rows() != 0) {
+            $success_query += 1;
+        }
 
-        return $this->db->affected_rows();
+        $sql = "UPDATE user SET email='". $data_pasien["email"] ."', full_name='". $data_pasien["nama_kk"] ."', no_hp='". $data_pasien["no_hp"] ."' WHERE id='". $data_pasien['id_user'] ."';";
+        $this->db->query($sql);
+        if ($this->db->affected_rows() != 0) {
+            $success_query += 1;
+        }
+
+        $sql = "UPDATE rekam_medik SET no_kartu='". $data_pasien["no_kartu"] ."' WHERE id_pasien='". $data_pasien['id_pasien'] ."';";
+        $this->db->query($sql);
+        if ($this->db->affected_rows() != 0) {
+            $success_query += 1;
+        }
+
+        return $success_query;
     }
 }

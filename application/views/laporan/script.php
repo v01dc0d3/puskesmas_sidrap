@@ -132,12 +132,16 @@ function getDiagnosis() {
 
           // sesuaikan dengan bulan
           for( var i = 0; i < data.length; i++ ) {
+            console.log();
+            if (data[i].diagnosis != null) {
               var data_month = data[i].tgl.split("/")[1];
               if (data_month == cur_month) {
                   var data_diagnosis = data[i].diagnosis;
                   data_penyakit_raw.push(data_diagnosis);
               }
+            }
           }
+          console.log(data_penyakit_raw);
 
           // kategorikan nama penyaki dari [diare,diare,kejang demam] menjadi [diare,kejang demam]
           myLineChart.data.labels = [];

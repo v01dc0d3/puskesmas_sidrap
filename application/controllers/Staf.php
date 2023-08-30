@@ -167,6 +167,7 @@ class Staf extends CI_Controller {
         $this->load->model("Pasien");
         $data["data_pasien"] = $this->Pasien->get_data_by_id_pasien($_POST['id_pasien'])[0];
         $data["id_pasien"] = $_POST['id_pasien'];
+        $data["id_user"] = $_POST['id_user'];
 
         $data['title'] = "Edit Pasien";
 

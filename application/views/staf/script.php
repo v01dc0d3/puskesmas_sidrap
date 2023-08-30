@@ -72,6 +72,7 @@ $('#myTable').on('click', 'button#edit_pasien', function() {
 
     $.redirect("<?= base_url('staf/edit_pasien'); ?>", {
         id_pasien: data.id_pasien,
+        id_user: data.user_id,
     });
 
 });
