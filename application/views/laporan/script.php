@@ -189,6 +189,10 @@ $("a.dropdown-toggle").click(function(e) {
   });
 
   $("ul.dropdown-menu li a").click(function(e) {
+    console.log($(this).text());
+
+    $("h1#page_title").text("Laporan " + $(this).text());
+
     var data_penyakit = [];
     var data_penyakit_raw = [];
     var data_jumlah_penyakit = [];
@@ -249,6 +253,10 @@ $("a.dropdown-toggle").click(function(e) {
     });
   });
 });
+
+// $("button#print_laporan").click(function() {
+//   $("div.chart-area").;
+// });
 
 
 </script>

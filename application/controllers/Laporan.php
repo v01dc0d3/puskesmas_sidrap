@@ -17,7 +17,12 @@ class Laporan extends CI_Controller {
     
 	public function index()
 	{
-        $data['title'] = "Laporan";
+        $now = new \DateTime('now');
+        $monthNum  = $now->format('m');
+        $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+        $monthName = $dateObj->format('F');
+
+        $data['title'] = "Laporan " . $monthName;
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -37,6 +42,10 @@ class Laporan extends CI_Controller {
         $month_filter = $_POST["month_filter"];
         $this->load->model("Rekap_medis");
         echo json_encode($this->Rekap_medis->model_read_diagnosis_by_month($month_filter));
+    }
+
+    public function print_laporan() {
+        $this->load->view('laporan/print_laporan');
     }
 
 }
