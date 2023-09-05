@@ -13,6 +13,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "tgl" },
             { "data": "nik" },
+            { "data": "no_kartu" },
             { "data": "nama_kk" },
             { 
                 "data": null,
