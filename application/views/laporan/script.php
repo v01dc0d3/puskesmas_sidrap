@@ -117,6 +117,15 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
+function removeTags(str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+
+    return str.replace( /(<([^>]+)>)/ig, '');
+}
+
 function getDiagnosis() {
   var data_penyakit = [];
   var data_penyakit_raw = [];
@@ -136,7 +145,7 @@ function getDiagnosis() {
               var data_month = data[i].tgl.split("/")[1];
               if (data_month == cur_month) {
                   var data_diagnosis = data[i].diagnosis;
-                  data_penyakit_raw.push(data_diagnosis);
+                  data_penyakit_raw.push(removeTags(data_diagnosis));
               }
             }
           }
@@ -151,11 +160,16 @@ function getDiagnosis() {
                 }
             }
           });
+          console.log(data_penyakit);
 
           myLineChart.data.datasets[0].data = [];
           var jumlah = 1;
           var cur_data = data_penyakit_raw[0];
-          for (var i = 1; i < data_penyakit_raw.length; i++) {
+
+          if (data_penyakit_raw.length == 1) {
+            myLineChart.data.datasets[0].data.push(jumlah);
+          } else {
+            for (var i = 1; i < data_penyakit_raw.length; i++) {
             if (cur_data != data_penyakit_raw[i]) {
               myLineChart.data.datasets[0].data.push(jumlah);
               jumlah = 1;
@@ -169,6 +183,9 @@ function getDiagnosis() {
             }
             cur_data = data_penyakit_raw[i];
           }
+          }
+
+
         } else {
           myLineChart.data.labels = ["Tidak ada Kasus", "Tidak ada Kasus"];
             myLineChart.data.datasets[0].data = [0, 0];

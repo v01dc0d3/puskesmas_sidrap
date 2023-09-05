@@ -31,6 +31,7 @@
                 <tr>
                     <th>Tgl</th>
                     <th>NIK</th>
+                    <th>No Rekam Medik</th>
                     <th>Nama Pasien</th>
                     <th>Aksi</th>
                 </tr>

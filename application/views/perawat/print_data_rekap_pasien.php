@@ -58,7 +58,7 @@
         <tr><td colspan="4" style="text-align:center;"><small>e-mail: puskesmas_tanrutedong@yahoo.com</small></td></tr>
         <tr>
             <td class="judul">No. Identitas<span class="tab"></span></td>
-            <td>:<u><?= $data_identitas[0]["no"]; ?></u></td>
+            <td>:<u><?= $data_rekap_pasien[0]["nik"]; ?></u></td>
             <td class="judul">No. Rekam Medik<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["no_kartu"]; ?></u></td>
         </tr>

@@ -1,21 +1,5 @@
 <script>
 $(document).ready(function() {
-    $("button#show_password").click(function() {
-        if( $("input#password").attr("type") == "text" ) {
-            $("input#password").attr("type", "password");
-        } else {
-            $("input#password").attr("type", "text");
-        }
-    });
-
-    $("button#show_confirm_password").click(function() {
-        if( $("input#confirm_password").attr("type") == "text" ) {
-            $("input#confirm_password").attr("type", "password");
-        } else {
-            $("input#confirm_password").attr("type", "text");
-        }
-    });
-
     $("button#daftar").click(function() {
         if( $("#email").val() == "" || $("#email").val().length < 20 ) {
             Swal.fire({

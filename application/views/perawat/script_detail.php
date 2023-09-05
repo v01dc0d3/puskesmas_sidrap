@@ -21,6 +21,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "tgl" },
             { "data": "nik" },
+            { "data": "no_kartu" },
             { "data": "nama_kk" },
             { 
                 "data": null,
@@ -296,8 +297,6 @@ $(document).ready(function() {
                     let asuhan = $('textarea#asuhan').val();
                     let paraf_paramedis = $('select#paraf_paramedis').val();
 
-                    console.log("asdadsa");
-
                     $.ajax({
                         url: '<?= base_url("perawat/get_id_rekam_medik_by_pasien"); ?>',
                         method: 'POST',
@@ -307,7 +306,7 @@ $(document).ready(function() {
                             let id_rekam_medik = data[0].id;
 
                             let tgl = new Date();
-                            tgl = tgl.getDate() + "/" + tgl.getMonth() + "/" + tgl.getFullYear();
+                            tgl = tgl.getDate() + "/" + (tgl.getMonth() + 1) + "/" + tgl.getFullYear();
 
                             $.ajax({
                                 url: '<?= base_url("perawat/insert_data_rekap"); ?>',
