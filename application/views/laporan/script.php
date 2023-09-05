@@ -230,6 +230,7 @@ $("a.dropdown-toggle").click(function(e) {
             // sorting data penyakit
             for( var i = 0; i < data.length; i++ ) {
               if (data[i].diagnosis != null) {
+                var data_diagnosis = data[i].diagnosis;
                 data_penyakit_raw.push(data[i].diagnosis);
               }
             }

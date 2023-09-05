@@ -57,7 +57,7 @@
         <tr><td colspan="4" style="text-align:center;"><small>Jl. Andi Cammi No. 8 Tanrutedong, Kec. Dua Pitue Kab. Sidrap Telp. (0421) 721 009 Kode Pos 91681</small></td></tr>
         <tr><td colspan="4" style="text-align:center;"><small>e-mail: puskesmas_tanrutedong@yahoo.com</small></td></tr>
         <tr>
-            <td class="judul">NIK<span class="tab"></span></td>
+            <td class="judul">No. Identitas<span class="tab"></span></td>
             <td>:<u><?= $data_rekap_pasien[0]["nik"]; ?></u></td>
             <td class="judul">No. Rekam Medik<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["no_kartu"]; ?></u></td>
