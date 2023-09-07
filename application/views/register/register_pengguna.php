@@ -77,9 +77,6 @@
                         <div class="pt-1 pb-4 px-5">
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('forget_password'); ?>">Lupa Password?</a>
-                            </div>
-                            <div class="text-center">
                                 <a class="small" href="<?= base_url('admin'); ?>">Kembali ke halaman admin</a>
                             </div>
                         </div>
