@@ -72,7 +72,8 @@ class Rekap_medis extends CI_Model {
     }
 
     public function model_read_diagnosis() {
-        $sql = "SELECT tgl, diagnosis FROM rekap_medis ORDER BY diagnosis ASC;";
+        $month = idate("m");
+        $sql = "SELECT tgl, diagnosis FROM rekap_medis WHERE SUBSTRING_INDEX(SUBSTRING_INDEX(tgl, '/', 2), '/', -1) LIKE '%$month%' ORDER BY diagnosis ASC;";
         return $this->db->query($sql)->result_array();
     }
 

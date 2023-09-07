@@ -142,11 +142,8 @@ function getDiagnosis() {
           // sesuaikan dengan bulan
           for( var i = 0; i < data.length; i++ ) {
             if (data[i].diagnosis != null) {
-              var data_month = data[i].tgl.split("/")[1];
-              if (data_month == cur_month) {
-                  var data_diagnosis = data[i].diagnosis;
-                  data_penyakit_raw.push(removeTags(data_diagnosis));
-              }
+              var data_diagnosis = data[i].diagnosis;
+              data_penyakit_raw.push(removeTags(data_diagnosis));
             }
           }
 
@@ -154,37 +151,35 @@ function getDiagnosis() {
           myLineChart.data.labels = [];
           $.each(data_penyakit_raw, function(i, el){
             if($.inArray(el, data_penyakit) === -1) {
-                if (data_penyakit.length < 10) {
-                  data_penyakit.push(el);
-                  myLineChart.data.labels.push(el);
-                }
+              data_penyakit.push(el);
+              myLineChart.data.labels.push(el);
             }
           });
-          console.log(data_penyakit);
 
           myLineChart.data.datasets[0].data = [];
-          var jumlah = 1;
-          var cur_data = data_penyakit_raw[0];
-
           if (data_penyakit_raw.length == 1) {
-            myLineChart.data.datasets[0].data.push(jumlah);
+            myLineChart.data.datasets[0].data.push(1);
           } else {
-            for (var i = 1; i < data_penyakit_raw.length; i++) {
-            if (cur_data != data_penyakit_raw[i]) {
-              myLineChart.data.datasets[0].data.push(jumlah);
-              jumlah = 1;
-            } else {
-              jumlah++;
-            }
+            $.each(data_penyakit_raw, function(i, el) {
+              var idx = $.inArray(el, data_jumlah_penyakit);
+              if(idx === -1) {
+                myLineChart.data.datasets[0].data.push(1);
+                data_jumlah_penyakit.push(el);
+              } else {
+                myLineChart.data.datasets[0].data[idx] += 1;
+              }
+              
+            });
 
-            if (data_penyakit_raw[i+1] == undefined) {
-              myLineChart.data.datasets[0].data.push(jumlah);
-              jumlah = 1;
-            }
-            cur_data = data_penyakit_raw[i];
+            // filter 10 penyakit dengan intensitas terbanyak
+            $.each(myLineChart.data.datasets[0].data, function(i, el) {
+              var posOfMinVal =  myLineChart.data.datasets[0].data.indexOf(Math.min(...myLineChart.data.datasets[0].data));
+              if (myLineChart.data.datasets[0].data.length > 10) {
+                myLineChart.data.datasets[0].data.splice(posOfMinVal, 1);
+                myLineChart.data.labels.splice(posOfMinVal, 1);
+              }
+            });
           }
-          }
-
 
         } else {
           myLineChart.data.labels = ["Tidak ada Kasus", "Tidak ada Kasus"];
@@ -208,7 +203,6 @@ $("a.dropdown-toggle").click(function(e) {
   });
 
   $("ul.dropdown-menu li a").click(function(e) {
-    console.log($(this).text());
 
     $("h1#page_title").text("Laporan " + $(this).text());
 
@@ -226,43 +220,47 @@ $("a.dropdown-toggle").click(function(e) {
           var data = JSON.parse(result);
 
           if ( data.length > 0 ) {
-            console.log(data);
             // sorting data penyakit
             for( var i = 0; i < data.length; i++ ) {
               if (data[i].diagnosis != null) {
                 var data_diagnosis = data[i].diagnosis;
-                data_penyakit_raw.push(data[i].diagnosis);
+                data_penyakit_raw.push(removeTags(data_diagnosis));
               }
             }
 
             myLineChart.data.labels = [];
             $.each(data_penyakit_raw, function(i, el){
               if($.inArray(el, data_penyakit) === -1) {
-                  if (data_penyakit.length < 10) {
-                    data_penyakit.push(el);
-                    myLineChart.data.labels.push(el);
-                  }
+                data_penyakit.push(el);
+                myLineChart.data.labels.push(el);
               }
             });
             
-            // arraynya data_jumlah_penyakit
             myLineChart.data.datasets[0].data = [];
-            var jumlah = 1;
-            var cur_data = data_penyakit_raw[0];
-            for (var i = 1; i < data_penyakit_raw.length; i++) {
-              if (cur_data != data_penyakit_raw[i]) {
-                myLineChart.data.datasets[0].data.push(jumlah);
-                jumlah = 1;
-              } else {
-                jumlah++;
-              }
+            if (data_penyakit_raw.length == 1) {
+              myLineChart.data.datasets[0].data.push(1);
+            } else {
+              $.each(data_penyakit_raw, function(i, el) {
+                var idx = $.inArray(el, data_jumlah_penyakit);
+                if(idx === -1) {
+                  myLineChart.data.datasets[0].data.push(1);
+                  data_jumlah_penyakit.push(el);
+                } else {
+                  myLineChart.data.datasets[0].data[idx] += 1;
+                }
+                
+              });
 
-              if (data_penyakit_raw[i+1] == undefined) {
-                myLineChart.data.datasets[0].data.push(jumlah);
-                jumlah = 1;
-              }
-              cur_data = data_penyakit_raw[i];
-            } 
+              // filter 10 penyakit dengan intensitas terbanyak
+              $.each(myLineChart.data.datasets[0].data, function(i, el) {
+                var posOfMinVal =  myLineChart.data.datasets[0].data.indexOf(Math.min(...myLineChart.data.datasets[0].data));
+                if (myLineChart.data.datasets[0].data.length > 10) {
+                  myLineChart.data.datasets[0].data.splice(posOfMinVal, 1);
+                  myLineChart.data.labels.splice(posOfMinVal, 1);
+                }
+              });
+            }
+
           } else {
             myLineChart.data.labels = ["Tidak ada Kasus", "Tidak ada Kasus"];
             myLineChart.data.datasets[0].data = [0, 0];
