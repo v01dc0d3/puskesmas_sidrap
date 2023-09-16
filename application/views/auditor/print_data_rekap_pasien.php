@@ -15,12 +15,18 @@
             text-align: left;
             vertical-align: middle;
         }
+        .td_center {
+            text-align: center;
+        }
+        .td_left {
+            text-align: left;
+        }
         .tab {
             display: inline-block;
             margin-left: 4em;
         }
         .judul {
-            text-align: right;
+            text-align: left;
         }
 
         .table_rekap {
@@ -57,32 +63,42 @@
         <tr><td colspan="4" style="text-align:center;"><small>Jl. Andi Cammi No. 8 Tanrutedong, Kec. Dua Pitue Kab. Sidrap Telp. (0421) 721 009 Kode Pos 91681</small></td></tr>
         <tr><td colspan="4" style="text-align:center;"><small>e-mail: puskesmas_tanrutedong@yahoo.com</small></td></tr>
         <tr>
+            <td></td>
             <td class="judul">No. Identitas<span class="tab"></span></td>
             <td>:<u><?= $data_rekap_pasien[0]["nik"]; ?></u></td>
-            <td class="judul">No. Rekam Medik<span class="tab"></span></td>
+            <td></td>
+            <td class="judul">No. Kartu<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["no_kartu"]; ?></u></td>
         </tr>
         <tr>
+            <td></td>
             <td class="judul">Nama KK<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["nama_kk"]; ?></u></td>
+            <td></td>
             <td class="judul">Jenis Kelamin<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["jenis_kelamin"]; ?></u></td>
         </tr>
         <tr>
+            <td></td>
             <td class="judul">Nama Pasien<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["nama"]; ?></u></td>
+            <td></td>
             <td class="judul">Pekerjaan<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["pekerjaan"]; ?></u></td>
         </tr>
         <tr>
+            <td></td>
             <td class="judul">Tanggal Lahir<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["tanggal_lahir"]; ?></u></td>
+            <td></td>
             <td class="judul">Agama<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["agama"]; ?></u></td>
         </tr>
         <tr>
+            <td></td>
             <td class="judul">Alamat<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["alamat"]; ?></u></td>
+            <td></td>
             <td class="judul">No. Hp<span class="tab"></span></td>
             <td>:<u><?= $data_identitas[0]["no_hp"]; ?></u></td>
         </tr>
@@ -111,18 +127,18 @@
         </tr>
         <?php foreach($data_rekap_pasien as $drp) : ?>
         <tr>
-            <td><?= $drp['tgl']; ?></td>
-            <td><?= $drp['umur']; ?></td>
-            <td><?= $drp['nama_ruang']; ?></td>
-            <td><?= $drp['kajian_subjektif']; ?></td>
+            <td class="td_center"><?= $drp['tgl']; ?></td>
+            <td class="td_center"><?= $drp['umur']; ?></td>
+            <td class="td_center"><?= $drp['nama_ruang']; ?></td>
+            <td class="td_center"><?= $drp['kajian_subjektif']; ?></td>
             <td><?= $drp['kajian_objektif']; ?></td>
             <td><?php echo (empty($drp['anam_pem_fisik'])) ? "" : $drp['anam_pem_fisik']; ?></td>
-            <td><?php echo (empty($drp['diagnosis'])) ? "" : $drp['diagnosis']; ?></td>
+            <td class="td_center"><?php echo (empty($drp['diagnosis'])) ? "" : $drp['diagnosis']; ?></td>
             <td><?php echo (empty($drp['terapi'])) ? "" : $drp['terapi']; ?></td>
             <td><?php echo (empty($drp['asuhan'])) ? "" : $drp['asuhan']; ?></td>
-            <td><?php echo (empty($drp['icd'])) ? "" : $drp['icd']; ?></td>
-            <td><?= $drp['paraf_medis']; ?></td>
-            <td><?= $drp['paraf_paramedis']; ?></td>
+            <td class="td_center"><?php echo (empty($drp['icd'])) ? "" : $drp['icd']; ?></td>
+            <td class="td_center"><?= $drp['paraf_medis']; ?></td>
+            <td class="td_center"><?= $drp['paraf_paramedis']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
