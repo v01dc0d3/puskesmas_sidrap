@@ -180,7 +180,17 @@ class Auditor extends CI_Controller {
         $data['title'] = 'Lihat Rekam Medik';
 
         $data['id_pasien'] = $_POST['id_pasien'];
+        $data['nik'] = $_POST['nik'];
         $data['nama_kk'] = $_POST['nama_kk'];
+        $data['nama'] = $_POST['nama'];
+        $data['tanggal_lahir'] = $_POST['tanggal_lahir'];
+        $data['alamat'] = $_POST['alamat'];
+        $data['jenis_kelamin'] = $_POST['jenis_kelamin'];
+        $data['pekerjaan'] = $_POST['pekerjaan'];
+        $data['agama'] = $_POST['agama'];
+        $data['no_hp'] = $_POST['no_hp'];
+        $data['umur'] = $_POST['umur'];
+        $data['email'] = $_POST['email'];
         $data['no_kartu'] = $_POST['no_kartu'];
         $data['no'] = $_POST['no'];
 
@@ -189,7 +199,18 @@ class Auditor extends CI_Controller {
         $this->load->view('templates/topbar');
 		$this->load->view('auditor/audit_staf_lihat', $data);
 		$this->load->view('auditor/script_audit_staf_lihat', $data);
+        
         $this->load->view('templates/footer');
+    }
+
+    public function modal_body_biodata() {
+        $data["modal_id"] = "modal_biodata";
+        $data["modal_label"] = "modal_label_biodata";
+        $data["modal_title"] = "Biodata Pasien";
+
+        $this->load->view('templates/modal/modal_header', $data);
+        $this->load->view('auditor/modal/biodata', $data);
+        $this->load->view('templates/modal/modal_footer');
     }
 
     public function get_all_rekam_medik_pasien_by_id_pasien() {

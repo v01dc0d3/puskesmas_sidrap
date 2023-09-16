@@ -12,6 +12,9 @@
         <button type="button" class="btn btn-danger" id="kembali_ke_staf">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
+        <button type="button" class="btn btn-primary" id="lihat_biodata">
+            Lihat Biodata Pasien
+        </button>
     </div>
 </div>
 

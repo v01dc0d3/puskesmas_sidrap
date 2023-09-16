@@ -18,7 +18,7 @@ class Resep_obat extends CI_Model {
 
     public function get_all_resep_obat()
     {
-        $sql = "SELECT ro.*, p.nama_kk FROM resep_obat AS ro INNER JOIN rekap_medis AS rms ON ro.id_rekap_medis = rms.id INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id";
+        $sql = "SELECT ro.*, p.nama_kk, rmk.no_kartu FROM resep_obat AS ro INNER JOIN rekap_medis AS rms ON ro.id_rekap_medis = rms.id INNER JOIN rekam_medik AS rmk ON rms.id_rekam_medik = rmk.id INNER JOIN pasien AS p ON rmk.id_pasien = p.id";
         return $this->db->query($sql)->result_array();
     }
 

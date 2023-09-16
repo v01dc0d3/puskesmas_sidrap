@@ -14,7 +14,7 @@ class Rekam_medik extends CI_Model {
     }
 
     public function get_all_last_rekam_medik_pasien() {
-        $sql = "SELECT rmk.id AS id_rekam_medik, p.nama_kk, p.nik, rmk.id_pasien, rmk.no_kartu, MAX(rmk.no) AS 'no', u.id AS 'user_id' FROM rekam_medik AS rmk INNER JOIN pasien AS p ON rmk.id_pasien = p.id INNER JOIN user AS u ON p.email = u.email GROUP BY rmk.id_pasien;";
+        $sql = "SELECT rmk.id AS id_rekam_medik, p.nik, p.nama_kk, p.nama, p.tanggal_lahir, p.alamat, p.jenis_kelamin, p.pekerjaan, p.agama, p.no_hp, p.umur, p.email, rmk.id_pasien, rmk.no_kartu, MAX(rmk.no) AS 'no', u.id AS 'user_id' FROM rekam_medik AS rmk INNER JOIN pasien AS p ON rmk.id_pasien = p.id INNER JOIN user AS u ON p.email = u.email GROUP BY rmk.id_pasien;";
         return $this->db->query($sql)->result_array();
     }
 

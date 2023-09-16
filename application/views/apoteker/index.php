@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Tgl</th>
+                    <th>No. Kartu</th>
                     <th>Status</th>
                     <th>Nama Pasien</th>
                     <th>Aksi</th>

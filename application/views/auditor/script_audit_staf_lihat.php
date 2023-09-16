@@ -58,5 +58,29 @@ $("button#kembali_ke_staf").click(function() {
     window.location.replace("<?= base_url('auditor/staf/'); ?>");
 });
 
+$("button#lihat_biodata").click(function() {
+    $("div.modal_crud").remove();
+    $.ajax({
+        url: '<?= base_url("auditor/modal_body_biodata"); ?>',
+        success: function(result) {
+            $("body").append(result);
+
+            $('input#nik').val("<?= $nik; ?>");
+            $('input#nama_kk').val("<?= $nama_kk; ?>");
+            $('input#nama').val("<?= $nama; ?>");
+            $('input#tanggal_lahir').val("<?= $tanggal_lahir; ?>");
+            $('input#alamat').val("<?= $alamat; ?>");
+            $('input#jenis_kelamin').val("<?= $jenis_kelamin; ?>");
+            $('input#pekerjaan').val("<?= $pekerjaan; ?>");
+            $('input#agama').val("<?= $agama; ?>");
+            $('input#no_hp').val("<?= $no_hp; ?>");
+            $('input#umur').val("<?= $umur; ?>");
+            $('input#email').val("<?= $email; ?>");
+
+            $("div#modal_biodata").modal("show");
+        }
+    });
+});
+
 });
 </script>
