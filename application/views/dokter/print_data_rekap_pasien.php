@@ -15,7 +15,7 @@
             text-align: left;
             vertical-align: middle;
         }
-        .td_center {
+        .to_center {
             text-align: center;
         }
         .td_left {
@@ -56,12 +56,12 @@
 </head>
 <body>
     <table>
-        <tr><th colspan="4">PEMERINTAH KABUPATEN SIDENRENG RAPPANG</th></tr>
-        <tr><th colspan="4">DINAS KESEHATAN</th></tr>
-        <tr><th colspan="4">PENGENDALIAN PENDUDUK DAN KB</th></tr>
-        <tr><th colspan="4"><b>UPT PUSKESMAS TANRUTEDONG</b></th></tr>
-        <tr><td colspan="4" style="text-align:center;"><small>Jl. Andi Cammi No. 8 Tanrutedong, Kec. Dua Pitue Kab. Sidrap Telp. (0421) 721 009 Kode Pos 91681</small></td></tr>
-        <tr><td colspan="4" style="text-align:center;"><small>e-mail: puskesmas_tanrutedong@yahoo.com</small></td></tr>
+        <tr><th colspan="6">PEMERINTAH KABUPATEN SIDENRENG RAPPANG</th></tr>
+        <tr><th colspan="6">DINAS KESEHATAN</th></tr>
+        <tr><th colspan="6">PENGENDALIAN PENDUDUK DAN KB</th></tr>
+        <tr><th colspan="6"><b>UPT PUSKESMAS TANRUTEDONG</b></th></tr>
+        <tr><td colspan="6" style="text-align:center;"><small>Jl. Andi Cammi No. 8 Tanrutedong, Kec. Dua Pitue Kab. Sidrap Telp. (0421) 721 009 Kode Pos 91681</small></td></tr>
+        <tr><td colspan="6" style="text-align:center;"><small>e-mail: puskesmas_tanrutedong@yahoo.com</small></td></tr>
         <tr>
             <td></td>
             <td class="judul">No. Identitas<span class="tab"></span></td>
@@ -127,18 +127,18 @@
         </tr>
         <?php foreach($data_rekap_pasien as $drp) : ?>
         <tr>
-            <td class="td_center"><?= $drp['tgl']; ?></td>
-            <td class="td_center"><?= $drp['umur']; ?></td>
-            <td class="td_center"><?= $drp['nama_ruang']; ?></td>
-            <td class="td_center"><?= $drp['kajian_subjektif']; ?></td>
+            <td class="to_center"><?= $drp['tgl']; ?></td>
+            <td class="to_center"><?= $drp['umur']; ?></td>
+            <td class="to_center"><?= $drp['nama_ruang']; ?></td>
+            <td class="to_center"><?= $drp['kajian_subjektif']; ?></td>
             <td><?= $drp['kajian_objektif']; ?></td>
             <td><?php echo (empty($drp['anam_pem_fisik'])) ? "" : $drp['anam_pem_fisik']; ?></td>
-            <td class="td_center"><?php echo (empty($drp['diagnosis'])) ? "" : $drp['diagnosis']; ?></td>
+            <td class="to_center"><?php echo (empty($drp['diagnosis'])) ? "" : $drp['diagnosis']; ?></td>
             <td><?php echo (empty($drp['terapi'])) ? "" : $drp['terapi']; ?></td>
             <td><?php echo (empty($drp['asuhan'])) ? "" : $drp['asuhan']; ?></td>
-            <td class="td_center"><?php echo (empty($drp['icd'])) ? "" : $drp['icd']; ?></td>
-            <td class="td_center"><?= $drp['paraf_medis']; ?></td>
-            <td class="td_center"><?= $drp['paraf_paramedis']; ?></td>
+            <td class="to_center"><?php echo (empty($drp['icd'])) ? "" : $drp['icd']; ?></td>
+            <td class="to_center"><?= $drp['paraf_medis']; ?></td>
+            <td class="to_center"><?= $drp['paraf_paramedis']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
